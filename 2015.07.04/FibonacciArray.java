@@ -1,4 +1,5 @@
 /*Fibonacci Array---Leibniz.Hu 2015.07.03
+from <<Thinking in Java>> Page 75 Execise 8
 @author Leibniz.Hu
 @version 1.0
 */
