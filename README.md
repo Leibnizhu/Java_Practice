@@ -16,6 +16,8 @@
 包括：《Thinking in Java》的斐波拉契数组及吸血鬼数练习。
 * [2015.07.05](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.05)
 包括：码农和产品经理的抽象类Demo，《Thinking in Java》的5.3, 5.4, 5.5, 5.21, 5.22等练习。
+* [2015.07.09](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.09)
+包括：视频教程里的老师和电脑异常Demo，还有一个更简单的异常处理Demo
 
 ### 总结
 ---
