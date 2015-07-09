@@ -15,9 +15,9 @@ class TeacherExceptionDemo{
 			tCang.lecture();
 			tCang.setLaptopStatus(PcStatus.SMOKING);
 			tCang.lecture();
+			//Codes below will not be execute, because Line 17 will throw out exception to JVM to handle it
 			tCang.setLaptopStatus(PcStatus.NORMAL);
-			tCang.lecture(); //will not be execute, because Line 17 will throw out exception to JVM to handle it
-			
+			tCang.lecture(); 
 		}
 		catch(UnHandlableException expUnHandle){
 			System.out.println("We cannot handle this status");
