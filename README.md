@@ -18,6 +18,8 @@
 包括：码农和产品经理的抽象类Demo，《Thinking in Java》的5.3, 5.4, 5.5, 5.21, 5.22等练习。
 * [2015.07.09](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.09)
 包括：视频教程里的老师和电脑异常Demo，还有一个更简单的异常处理Demo
+* [2015.07.12](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.12)
+包括：视频教程里两个练习：图形的接口/类的实现，多线程的基本练习
 
 ### 总结
 ---
