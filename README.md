@@ -20,6 +20,8 @@
 包括：视频教程里的老师和电脑异常Demo，还有一个更简单的异常处理Demo
 * [2015.07.12](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.12)
 包括：视频教程里两个练习：图形的接口/类的实现，多线程的基本练习
+* [2015.07.13](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.13)
+包括：视频教程里两个练习：银行多个客户同时存钱，和多个窗口同时卖火车票的Demo
 
 ### 总结
 ---
