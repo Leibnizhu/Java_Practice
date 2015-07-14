@@ -29,7 +29,7 @@ class TicketWindow implements Runnable{
 	private int sumTicket; //the whole number of tickets.
 	
 	TicketWindow(){
-		sumTicket = 100; //default=100 tickets.
+		TicketWindow(100); //default=100 tickets.
 	}
 	
 	TicketWindow(int sum){
