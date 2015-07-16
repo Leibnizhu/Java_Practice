@@ -24,6 +24,8 @@
 包括：视频教程里两个练习：银行多个客户同时存钱，和多个窗口同时卖火车票的Demo
 * [2015.07.14](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.14)
 包括：视频教程里三个练习：单个元素的Buffer、多个生产者和消费者(分别用synchronized和Lock实现)的Demo
+* [2015.07.16](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.16)
+包括：视频教程里四个String练习：字符串数组排序、统计子串出现次数、求最大相同子串、以及去头尾空格
 
 ### 感想
 ---
