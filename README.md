@@ -26,6 +26,8 @@
 包括：视频教程里三个练习：单个元素的Buffer、多个生产者和消费者(分别用synchronized和Lock实现)的Demo
 * [2015.07.16](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.16)
 包括：视频教程里四个String练习：字符串数组排序、统计子串出现次数、求最大相同子串、以及去头尾空格
+* [2015.07.18](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.18)
+包括：对字符串里的数字排序的Demo，简单的List容器Demo，用LinkedList实现栈和队列
 
 ### 感想
 ---
