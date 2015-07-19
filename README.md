@@ -28,6 +28,8 @@
 包括：视频教程里四个String练习：字符串数组排序、统计子串出现次数、求最大相同子串、以及去头尾空格
 * [2015.07.18](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.18)
 包括：对字符串里的数字排序的Demo，简单的List容器Demo，用LinkedList实现栈和队列
+* [2015.07.19](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.19)
+包括：HashSet, LinkedHashSet以及TreeSet(分别用元素自身compareTo()和比较器实现排序)的Demo
 
 ### 感想
 ---
