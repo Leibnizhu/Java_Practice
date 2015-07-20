@@ -8,26 +8,26 @@ import java.util.*;
 class HashSetDemo{
 	public static void main(String[] args){
 		System.out.println("Ordered by LinedHashSet");
-		LinkedHashSet lhsTest = new LinkedHashSet(); //Ordered LinkedHashSet
+		LinkedHashSet<Person> lhsTest = new LinkedHashSet<Person>(); //Ordered LinkedHashSet
 		lhsTest.add(new Person("Leibniz", 21));
 		lhsTest.add(new Person("Mayday", 27));
 		lhsTest.add(new Person("Jucy", 25));
 		lhsTest.add(new Person("Cudy", 23));
 		lhsTest.add(new Person("Cudy", 23)); //The same as the first element.
 		
-		for(Iterator it = lhsTest.iterator(); it.hasNext(); ) {
+		for(Iterator<Person> it = lhsTest.iterator(); it.hasNext(); ) {
 			System.out.println(it.next());
 		}
 		
 		System.out.println("\nUn-ordered by HashSet");
-		HashSet hsTest = new HashSet(); //Un-ordered HashSet
+		HashSet<Person> hsTest = new HashSet<Person>(); //Un-ordered HashSet
 		hsTest.add(new Person("Leibniz", 21));
 		hsTest.add(new Person("Mayday", 27));
 		hsTest.add(new Person("Jucy", 25));
 		hsTest.add(new Person("Cudy", 23));
 		hsTest.add(new Person("Cudy", 23)); //The same as the first element.
 		
-		for(Iterator it = hsTest.iterator(); it.hasNext(); ) {
+		for(Iterator<Person> it = hsTest.iterator(); it.hasNext(); ) {
 			System.out.println(it.next());
 		}
 	}

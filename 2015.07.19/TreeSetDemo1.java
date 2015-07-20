@@ -9,14 +9,14 @@ import java.util.*;
 class TreeSetDemo1{
 	public static void main(String[] args){
 		System.out.println("Name sorted by TreeSet, Use Comparable interface:");
-		TreeSet tsTest = new TreeSet(); //Ordered LinkedHashSet
+		TreeSet<Person> tsTest = new TreeSet<Person>(); //Ordered LinkedHashSet
 		tsTest.add(new Person("Leibniz", 21));
 		tsTest.add(new Person("Mayday", 27));
 		tsTest.add(new Person("Jucy", 25));
 		tsTest.add(new Person("Cudy", 23));
 		tsTest.add(new Person("Cudy", 23)); //The same as the first element.
 		
-		for(Iterator it = tsTest.iterator(); it.hasNext(); ) {
+		for(Iterator<Person> it = tsTest.iterator(); it.hasNext(); ) {
 			System.out.println(it.next());
 		}
 	}

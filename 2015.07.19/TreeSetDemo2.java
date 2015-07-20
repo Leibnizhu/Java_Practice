@@ -9,48 +9,48 @@ import java.util.*;
 class TreeSetDemo2{
 	public static void main(String[] args){
 		System.out.println("Name sorted by TreeSet, Use Comparable interface:");
-		TreeSet tsTest1 = new TreeSet(new CmpPersonName());
+		TreeSet<Person> tsTest1 = new TreeSet<Person>(new CmpPersonName());
 		tsTest1.add(new Person("Leibniz", 21));
 		tsTest1.add(new Person("Mayday", 27));
 		tsTest1.add(new Person("Jucy", 25));
 		tsTest1.add(new Person("Cudy", 23));
 		tsTest1.add(new Person("Cudy", 23)); //The same as the first element.
 		
-		for(Iterator it = tsTest1.iterator(); it.hasNext(); ) {
+		for(Iterator<Person> it = tsTest1.iterator(); it.hasNext(); ) {
 			System.out.println(it.next());
 		}
 		
 		System.out.println("\nAge sorted by TreeSet, Use Comparable interface:");
-		TreeSet tsTest2 = new TreeSet(new CmpPersonAge());
+		TreeSet<Person> tsTest2 = new TreeSet<Person>(new CmpPersonAge());
 		tsTest2.add(new Person("Leibniz", 21));
 		tsTest2.add(new Person("Mayday", 27));
 		tsTest2.add(new Person("Jucy", 25));
 		tsTest2.add(new Person("Cudy", 23));
 		tsTest2.add(new Person("Cudy", 23)); //The same as the first element.
 		
-		for(Iterator it = tsTest2.iterator(); it.hasNext(); ) {
+		for(Iterator<Person> it = tsTest2.iterator(); it.hasNext(); ) {
 			System.out.println(it.next());
 		}
 	}
 }
 
-class CmpPersonName implements Comparator {
-	public int compare(Object obj1, Object obj2) {
-		Person p1 = (Person)obj1;
-		Person p2 = (Person)obj2;
+class CmpPersonName implements Comparator<Person> {
+	public int compare(Person obj1, Person obj2) {
+		//Person p1 = (Person)obj1;
+		//Person p2 = (Person)obj2;
 		
-		int temp = p1.getName().compareTo(p2.getName());
-		return temp == 0? p1.getAge() - p2.getAge(): temp;
+		int temp = obj1.getName().compareTo(obj2.getName());
+		return temp == 0? obj1.getAge() - obj2.getAge(): temp;
 	}
 }
 
-class CmpPersonAge implements Comparator {
-	public int compare(Object obj1, Object obj2) {
-		Person p1 = (Person)obj1;
-		Person p2 = (Person)obj2;
+class CmpPersonAge implements Comparator<Person> {
+	public int compare(Person obj1, Person obj2) {
+		//Person p1 = (Person)obj1;
+		//Person p2 = (Person)obj2;
 		
-		int temp = p1.getAge() - p2.getAge();
-		return temp == 0? p1.getName().compareTo(p2.getName()): temp;
+		int temp = obj1.getAge() - obj2.getAge();
+		return temp == 0? obj1.getName().compareTo(obj2.getName()): temp;
 	}
 }
 
