@@ -8,14 +8,14 @@ public class VampireNumber {
 	public static void main(String[] args) {
 		getAllVampireNum();
 	}
-	
+
 	static void getAllVampireNum() {
 		for (int num=1001; num<9999; num++) {
 			//skip numbers end with 00.
 			/*if (num % 100 == 0) {
 				continue;
 			}*/
-			
+
 			int temp = num;
 			int[] digit = new int[4];
 			//separate num to 4 digits, digit[0] is lowest digit.
@@ -45,7 +45,7 @@ public class VampireNumber {
 			}
 		}
 	}
-	
+
 	/*for numbers meet the lowest digit condition, do the next judge, try two possibilities;
 	* if meet the vampire-number condition, the show the result.
 	*/
@@ -65,7 +65,7 @@ public class VampireNumber {
 			return false;
 		}
 	}
-	
+
 	//print out the result in a multiplier format.
 	static void printVampaire(int num, int num0, int num1) {
 		System.out.println(num + " = " + num0 + " * " + num1);

@@ -13,7 +13,7 @@ class StringDemo1 {
 		stringBubbleSort(arrTest);
 		printStringArray(arrTest);
 	}
-	
+
 	//Use bubble-sort to sort the given String array
 	public static void stringBubbleSort(String[] strArr) {
 		for (int outCnt = strArr.length-1; outCnt > 0; outCnt--) {	//outCnt: Outside Loop Counter
@@ -24,14 +24,14 @@ class StringDemo1 {
 			}
 		}
 	}
-		
+
 	//exchanges by given indexes of the given String array.
 	public static void mySwitch(String[] strArr, int index1, int index2) {
 		String temp = strArr[index1];
 		strArr[index1] = strArr[index2];
 		strArr[index2] = temp;
 	}
-	
+
 	//Print out the whole array, separates by comma
 	public static void printStringArray(String[] strArr) {
 		System.out.print("[ ");

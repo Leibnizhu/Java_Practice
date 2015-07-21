@@ -20,17 +20,17 @@ abstract class Employee {
 	private String name;
 	private int id;
 	private long pay;
-	
+
 	Employee(String name, int id, long pay) {
 		this.name = name;
 		this.id = id;
 		this.pay = pay;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	abstract void work();
 }
 
@@ -38,7 +38,7 @@ class Coder extends Employee {
 	Coder(String name, int id, long pay) {
 		super(name, id, pay);
 	}
-	
+
 	void work() {
 		System.out.println("Coder " + this.getName() + " is coding...");
 	}
@@ -50,7 +50,7 @@ class Manager extends Employee {
 		super(name, id, pay);
 		this.bonus = bonus;
 	}
-	
+
 	void work() {
 		System.out.println("Manager " + this.getName() + " is managing projects...");
 	}

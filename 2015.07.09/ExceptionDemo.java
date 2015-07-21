@@ -11,13 +11,13 @@ class ExceptionDemo {
 		int num = ed.method(array,-30);
 		//int num = ed.method(null,9);
 		System.out.println("num = " + num);
-		
+
 	}
 }
 
 class eDemo {
 	//MyNegativeIndexException extends from RuntimeException so that donot need to "throws" it
-	public int method (int[] array, int index) /*throws MyNegativeIndexException*/ {
+	public int method (int[] array, int index) { /*throws MyNegativeIndexException*/
 		if(array == null) {
 			throw new NullPointerException();
 		} else if(array.length <= index) {
@@ -31,10 +31,10 @@ class eDemo {
 
 //Custom Index<0 exception
 class MyNegativeIndexException extends RuntimeException {
-	MyNegativeIndexException(){
+	MyNegativeIndexException() {
 		;
 	}
-	
+
 	MyNegativeIndexException(String msgError) {
 		super(msgError);
 	}

@@ -9,29 +9,29 @@ import java.util.Arrays;
 
 class NumStringSort {
 	static final String SPACE = " ";
-	
+
 	public static void main(String[] args) {
 		String strTest = "20 78 9 -7 88 36 29";
-		
+
 		System.out.println(strTest);
 		System.out.println(NumStrSort(strTest));
 		//System.out.println(strTest);
 	}
-	
+
 	public static String NumStrSort(String numStr) {
 		//Transform numbers String into Strings array.
 		String[] numStrs = numStr.split(SPACE);
-		
+
 		//Transform Strings into numbers.
 		int[] numArray = new int[numStrs.length];
 		for(int i = 0; i < numStrs.length; i++) {
 			numArray[i] = Integer.parseInt(numStrs[i]);
 		}
-		
+
 		//Sort numbers by bubble-sort.
 		//Need import java.util.Arrays.
 		Arrays.sort(numArray);
-		
+
 		//return a sorted numbers String
 		StringBuffer sbTemp = new StringBuffer();
 		for(int i = 0; i < numStrs.length; i++) {

@@ -7,7 +7,7 @@ class SingletonDemo {
 		System.out.println(hsTest1.getNumber());
 		hsTest2.setNumber(10); //hsTest2 and hsTest1 point to the same instance
 		System.out.println(hsTest1.getNumber());
-		
+
 		LazySingleton hsTest3 = LazySingleton.getInstance();
 		LazySingleton hsTest4 = LazySingleton.getInstance();
 		System.out.println(hsTest4.getNumber());
@@ -20,16 +20,16 @@ class SingletonDemo {
 class HungrySingleton {
 	private int number = 3;
 	private static HungrySingleton pHungry = new HungrySingleton(); //create instance right now.
-	private HungrySingleton(){} //private constructor, the instance could not be created outside this class.
-	
+	private HungrySingleton() {} //private constructor, the instance could not be created outside this class.
+
 	public static HungrySingleton getInstance() {
 		return pHungry;
 	}
-	
+
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	
+
 	public int getNumber() {
 		return number;
 	}
@@ -40,8 +40,8 @@ class HungrySingleton {
 class LazySingleton {
 	private int number = 5;
 	private static LazySingleton pLazy = null;
-	private LazySingleton(){}
-	
+	private LazySingleton() {}
+
 	public static LazySingleton getInstance () {
 		//if no instance exists, then create it first.
 		if (pLazy==null) {
@@ -49,11 +49,11 @@ class LazySingleton {
 		}
 		return pLazy;
 	}
-	
+
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	
+
 	public int getNumber() {
 		return number;
 	}

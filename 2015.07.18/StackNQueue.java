@@ -18,7 +18,7 @@ class StackNQueue {
 		for(int i = 0; i < 10; i++) {
 			System.out.println(stkTest.pop());
 		}
-					
+
 		//Present queue.
 		myQueue qTest = new myQueue();
 		for(int i = 0; i < 10; i++) {
@@ -33,15 +33,15 @@ class StackNQueue {
 
 class myStack {
 	private LinkedList llTest; //Use to store stack.
-	
+
 	myStack() {
 		llTest = new LinkedList();
 	}
-	
+
 	public void push(Object obj) {
 		llTest.addLast(obj); //Add elements at the end of stack;
 	}
-	
+
 	public Object pop() {
 		return llTest.removeLast(); //When popping, pop from the end of the queue.
 	}
@@ -49,15 +49,15 @@ class myStack {
 
 class myQueue {
 	private LinkedList llTest; //Use to store queue.
-	
+
 	myQueue() {
 		llTest = new LinkedList();
 	}
-	
+
 	public void push(Object obj) {
 		llTest.addLast(obj); //Add elements at the end of queue;
 	}
-	
+
 	public Object pop() {
 		return llTest.removeFirst(); //When popping, pop from the beginning of the queue.
 	}

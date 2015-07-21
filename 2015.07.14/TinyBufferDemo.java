@@ -14,7 +14,7 @@ class TinyBufferDemo {
 		PeopleBuffer pBuf = new PeopleBuffer();
 		PeopleInput pIn = new PeopleInput(pBuf);
 		PeopleOutput pOut = new PeopleOutput(pBuf);
-		
+
 		Thread th1 = new Thread(pIn);
 		Thread th2 = new Thread(pOut);
 		th1.start();
@@ -27,15 +27,14 @@ class PeopleBuffer {
 	private String name;
 	private String sex;
 	boolean readAble = false;
-	
+
 	public synchronized void infoSet(String name, String sex) {
 		//Judge if write-able, if not, wait for notify.
 		while(readAble) {
-			try{
+			try {
 				this.wait();
-			}
-			catch(InterruptedException exp) {
-				
+			} catch(InterruptedException exp) {
+
 			}
 		}
 		this.name = name;
@@ -43,15 +42,14 @@ class PeopleBuffer {
 		readAble = true;
 		notifyAll(); //wake up all threads in thread-pool, to ensure infoOut can be run.
 	}
-	
+
 	public synchronized void infoOut() {
 		//Judge if read-able, if not, wait for notify.
 		while(!readAble) {
-			try{
+			try {
 				this.wait();
-			}
-			catch(InterruptedException exp) {
-				
+			} catch(InterruptedException exp) {
+
 			}
 		}
 		System.out.println(Thread.currentThread().getName() + "......"+ name + "......" + sex);
@@ -63,16 +61,16 @@ class PeopleBuffer {
 //Implement Runnable interface to input people information.
 class PeopleInput implements Runnable {
 	PeopleBuffer pb;
-	
+
 	PeopleInput(PeopleBuffer pb) {
 		this.pb = pb;
 	}
-	
+
 	public void run() {
 		int flag = 0;
 		int cnt = 0;
 		while(cnt < 100) {
-			if(flag == 1){
+			if(flag == 1) {
 				pb.infoSet("Cudy","Male");
 			} else {
 				pb.infoSet("Mayday","Femaleeeeeeee");
@@ -86,11 +84,11 @@ class PeopleInput implements Runnable {
 //Implement Runnable interface to output/print people information.
 class PeopleOutput implements Runnable {
 	PeopleBuffer pb;
-	
+
 	PeopleOutput(PeopleBuffer pb) {
 		this.pb = pb;
 	}
-	
+
 	public void run() {
 		int cnt = 0;
 		while(cnt < 100) {

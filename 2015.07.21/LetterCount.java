@@ -11,11 +11,11 @@ class LetterCount {
 		String strTest = "jaskdnfajwenwncaksjdweghxpcosond";
 		System.out.println(letterCount(strTest));
 	}
-	
+
 	public static String letterCount(String str) {
 		//1. separate into char array.
 		char[] letters = str.toCharArray();
-		
+
 		//2. new a TreeMap, traverse it, check if the letter in charArray is already in the map,
 		//   if exists, new a key-value; else, get the value and add 1, then put it back.
 		Map<Character, Integer> tmLetter = new TreeMap<Character, Integer>();
@@ -24,7 +24,7 @@ class LetterCount {
 			if(!(letters[i] >= 'a' && letters[i] <= 'z' || letters[i] >= 'A' && letters[i] <= 'Z' )) {
 				continue;
 			}
-			
+
 			//get value.
 			Integer value = tmLetter.get(letters[i]);
 			//change value.
@@ -34,7 +34,7 @@ class LetterCount {
 			}
 			tmLetter.put(letters[i], temp);
 		}
-		
+
 		//3. return a string like "a(1)b(3)......"
 		StringBuffer sbTemp = new StringBuffer();
 		for(Iterator<Character> it = tmLetter.keySet().iterator(); it.hasNext(); ) {

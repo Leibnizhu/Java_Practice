@@ -13,7 +13,7 @@ class ProducerNConsumerDemo2 {
 		Product pTemp = new Product();
 		Producer pPro = new Producer(pTemp);
 		Consumer pCon = new Consumer(pTemp);
-		
+
 		Thread th0 = new Thread(pPro);
 		Thread th1 = new Thread(pPro);
 		Thread th2 = new Thread(pCon);
@@ -36,7 +36,7 @@ class Product {
 	//Create monitors for producer and consumer.
 	Condition cndProducer = lockProduct.newCondition();
 	Condition cndConsumer = lockProduct.newCondition();
-	
+
 	public void produce(String name) {
 		//Get Locked
 		lockProduct.lock();
@@ -45,9 +45,8 @@ class Product {
 			while(consumeAble) {
 				try {
 					cndProducer.await();
-				}
-				catch(InterruptedException exp) {
-					
+				} catch(InterruptedException exp) {
+
 				}
 			}
 			this.name[ptPro] = name + " No." + cnt;
@@ -62,20 +61,19 @@ class Product {
 		}
 		finally {
 			lockProduct.unlock();
-		}	
+		}
 	}
-	
+
 	public void consume() {
 		//Get Locked
 		lockProduct.lock();
 		try {
 			//Judge if read-able, if not, wait for notify.
 			while(!consumeAble) {
-				try{
+				try {
 					cndConsumer.await();
-				}
-				catch(InterruptedException exp) {
-					
+				} catch(InterruptedException exp) {
+
 				}
 			}
 			System.out.println(Thread.currentThread().getName()+"...Consumer..............吃掉了："+this.name[ptCon]);
@@ -89,18 +87,18 @@ class Product {
 		finally {
 			lockProduct.unlock();
 		}
-		
+
 	}
 }
 
 //Implement Runnable interface to input people information.
 class Producer implements Runnable {
 	Product p;
-	
+
 	Producer(Product p) {
 		this.p = p;
 	}
-	
+
 	public void run() {
 		int cnt = 0;
 		while(cnt < 50) {
@@ -113,11 +111,11 @@ class Producer implements Runnable {
 //Implement Runnable interface to output/print people information.
 class Consumer implements Runnable {
 	Product p;
-	
+
 	Consumer(Product p) {
 		this.p = p;
 	}
-	
+
 	public void run() {
 		int cnt = 0;
 		while(cnt < 50) {

@@ -10,12 +10,12 @@ public class Int2Hex {
 	public static void Int2Hex(int Value) {
 		Trans2Any(Value, 15, 4);
 	}
-	
+
 	//Transform to Binary
 	public static void Int2Bin(int Value) {
 		Trans2Any(Value, 1, 1);
 	}
-	
+
 	//Transform to Octal
 	public static void Int2Oct(int Value) {
 		Trans2Any(Value, 7, 3);
@@ -26,20 +26,20 @@ public class Int2Hex {
 			System.out.println("0");
 			return;
 		}
-		
-		char[] SymTable={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+
+		char[] SymTable= {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 		char[] Result=new char[32];
 		int Pos=Result.length;
-		
+
 		//Use Mask to get low Offset bits, and store it into array
 		while(Value!=0) {
 			int Temp=Value & Mask;
 			Result[--Pos]=(SymTable[Temp]);
 			Value=Value>>Offset;
 		}
-		
+
 		//Print out the result array
-		for (int Cnt=Pos;Cnt<Result.length;Cnt++) {
+		for (int Cnt=Pos; Cnt<Result.length; Cnt++) {
 			System.out.print(Result[Cnt]);
 		}
 		System.out.println();

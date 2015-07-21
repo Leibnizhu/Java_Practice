@@ -18,23 +18,23 @@ public class ConstructorDemo {
 
 class Dog {
 	String name = "Cudy";
-	
+
 	//non-param constructor.
 	Dog() {
 		System.out.println("Initialize with default constructor. Dog's name is : " + name);
 	}
-	
+
 	//override constructor with a String param.
 	Dog(String name) {
 		this.name = name;
 		System.out.println("Initialize with override-constructor. Dog's name is : " + this.name);
 	}
-	
+
 	//barking with String param
 	void bark(String barking) {
 		System.out.println("Dog " + name + " is barking as " + barking);
 	}
-	
+
 	//howling with integer param
 	void bark(int howling) {
 		System.out.println("Dog " + name + " is howling " + howling + " time(s)!");

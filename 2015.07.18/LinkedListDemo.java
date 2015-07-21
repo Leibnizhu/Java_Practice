@@ -8,13 +8,13 @@
 import java.util.*;
 
 class LinkedListDemo {
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		LinkedList llTest = new LinkedList();
 		for(int i = 0; i < 5; i++) {
 			llTest.offerLast(new Person(("Cudy" + i), (20 + i)));
 		}
 		System.out.println(llTest);
-				
+
 		for(ListIterator listItr = llTest.listIterator(); listItr.hasNext(); ) {
 			System.out.println(listItr.next());
 		}
@@ -23,7 +23,7 @@ class LinkedListDemo {
 class Person {
 	private int age;
 	private String name;
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -36,12 +36,12 @@ class Person {
 	public int getAge() {
 		return age;
 	}
-	
+
 	Person(String name, int age) {
 		setName(name);
 		setAge(age);
 	}
-	
+
 	public String toString() {
 		return name + " : " + age;
 	}

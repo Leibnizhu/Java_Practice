@@ -14,7 +14,7 @@ class ProducerNConsumerDemo1 {
 		Product pTemp = new Product();
 		Producer pPro = new Producer(pTemp);
 		Consumer pCon = new Consumer(pTemp);
-		
+
 		Thread th0 = new Thread(pPro);
 		Thread th1 = new Thread(pPro);
 		Thread th2 = new Thread(pCon);
@@ -32,15 +32,14 @@ class Product {
 	private int cnt = 1;
 	private int ptPro, ptCon;
 	boolean consumeAble = false;
-	
+
 	public synchronized void produce(String name) {
 		//Judge if write-able, if not, wait for notify.
 		while(consumeAble) {
-			try{
+			try {
 				this.wait();
-			}
-			catch(InterruptedException exp) {
-				
+			} catch(InterruptedException exp) {
+
 			}
 		}
 		this.name[ptPro] = name + " No." + cnt;
@@ -52,17 +51,16 @@ class Product {
 			ptPro = 0;
 			notifyAll(); //wake up all threads in thread-pool, to ensure infoOut can be run.
 		}
-		
+
 	}
-	
+
 	public synchronized void consume() {
 		//Judge if read-able, if not, wait for notify.
 		while(!consumeAble) {
-			try{
+			try {
 				this.wait();
-			}
-			catch(InterruptedException exp) {
-				
+			} catch(InterruptedException exp) {
+
 			}
 		}
 		System.out.println(Thread.currentThread().getName()+"...Consumer.............."+this.name[ptCon]);
@@ -78,11 +76,11 @@ class Product {
 //Implement Runnable interface to input people information.
 class Producer implements Runnable {
 	Product p;
-	
+
 	Producer(Product p) {
 		this.p = p;
 	}
-	
+
 	public void run() {
 		int cnt = 0;
 		while(cnt < 50) {
@@ -95,11 +93,11 @@ class Producer implements Runnable {
 //Implement Runnable interface to output/print people information.
 class Consumer implements Runnable {
 	Product p;
-	
+
 	Consumer(Product p) {
 		this.p = p;
 	}
-	
+
 	public void run() {
 		int cnt = 0;
 		while(cnt < 50) {

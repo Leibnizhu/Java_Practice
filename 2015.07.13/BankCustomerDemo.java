@@ -7,32 +7,32 @@
 @version 1.0.0
 */
 
-class Bank{
+class Bank {
 	private int sumMoney;
-	
-	public synchronized void addMoney(int fund){ //operate sumMoney at twice, must take these two sentence into a synchronized function or code block.
+
+	public synchronized void addMoney(int fund) { //operate sumMoney at twice, must take these two sentence into a synchronized function or code block.
 		sumMoney += fund;
 		System.out.println("The bank has " + sumMoney + " in total.");
 	}
 }
 
-class Customer implements Runnable{
+class Customer implements Runnable {
 	private Bank cusBank = new Bank();
-	public void run(){
-		for(int i=0; i<5; i++){
+	public void run() {
+		for(int i=0; i<5; i++) {
 			cusBank.addMoney(100);
 		}
 	}
 }
 
-class BankCustomerDemo{
-	public static void main(String[] args){
+class BankCustomerDemo {
+	public static void main(String[] args) {
 		Customer cus = new Customer();
-		
+
 		Thread thCustomer1 = new Thread(cus);
 		Thread thCustomer2 = new Thread(cus);
 		Thread thCustomer3 = new Thread(cus);
-		
+
 		thCustomer1.start();
 		thCustomer2.start();
 		thCustomer3.start();

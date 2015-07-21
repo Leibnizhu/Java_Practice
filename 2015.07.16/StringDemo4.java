@@ -13,7 +13,7 @@ class StringDemo4 {
 		System.out.println(myTrim(strTest));
 		System.out.println(myTrim("                    "));
 	}
-	
+
 	public static String myTrim(String str) {
 		int left = 0;
 		int right = str.length() - 1;

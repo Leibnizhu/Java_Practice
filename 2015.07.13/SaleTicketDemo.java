@@ -7,46 +7,46 @@
 @version 1.0.0
 */
 
-class SaleTicketDemo{
-	public static void main(String[] args){
+class SaleTicketDemo {
+	public static void main(String[] args) {
 		TicketWindow tw1 = new TicketWindow();
 		TicketWindow tw2 = new TicketWindow(50);
-		
+
 		Thread thTicket1 = new Thread(tw1);
 		Thread thTicket2 = new Thread(tw1);
 		Thread thTicket3 = new Thread(tw2);
-		Thread thTicket4 = new Thread(tw2);		
-		
+		Thread thTicket4 = new Thread(tw2);
+
 		thTicket1.start();
 		thTicket2.start();
 		thTicket3.start();
-		thTicket4.start();		
+		thTicket4.start();
 	}
 }
 
-class TicketWindow implements Runnable{
+class TicketWindow implements Runnable {
 	Object lock = new Object();
 	private int sumTicket; //the whole number of tickets.
-	
-	TicketWindow(){
+
+	TicketWindow() {
 		TicketWindow(100); //default=100 tickets.
 	}
-	
-	TicketWindow(int sum){
+
+	TicketWindow(int sum) {
 		sumTicket = sum; //can be define by user too.
 	}
-	
-	public void run(){
+
+	public void run() {
 		int cntSaled = 0;
-		while(true){
-			synchronized(lock){
-				if(sumTicket > 0){
+		while(true) {
+			synchronized(lock) {
+				if(sumTicket > 0) {
 					/* use sleep()
 					try{
 						Thread.sleep(5);
 					}
 					catch(InterruptedException exp){
-						
+
 					}
 					/**/
 					System.out.println(Thread.currentThread().getName() + " is selling ticket No." + sumTicket--);
