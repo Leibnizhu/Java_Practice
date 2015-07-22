@@ -30,6 +30,10 @@
 包括：对字符串里的数字排序的Demo，简单的List容器Demo，用LinkedList实现栈和队列
 * [2015.07.19](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.19)
 包括：HashSet, LinkedHashSet以及TreeSet(分别用元素自身compareTo()和比较器实现排序)的Demo
+* [2015.07.21](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.21)
+包括：使用HashMap统计一个字符串中各个字母出现次数的Demo
+* [2015.07.22](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.22)
+包括：小试Foreach语句，以及System类和Date类的方法
 
 ### 感想
 ---
