@@ -34,6 +34,8 @@
 包括：使用HashMap统计一个字符串中各个字母出现次数的Demo
 * [2015.07.22](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.22)
 包括：小试Foreach语句，以及System类和Date类的方法
+* [2015.07.23](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.23)
+包括：尝试Calendar类的使用，以及IO类的复制文件简单小Demo
 
 ### 感想
 ---
