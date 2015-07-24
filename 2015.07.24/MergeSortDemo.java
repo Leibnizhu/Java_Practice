@@ -17,7 +17,7 @@ class MergeSortDemo{
 	public static void mergeSort(int[] intArr, int indexLeft, int indexRight) {
 		if(indexLeft < indexRight){
 			int indexMid = (indexLeft + indexRight)/2;
-			System.out.println(indexMid);
+			//System.out.println(indexMid);
 			//1. Divide into two small sort and conquer respectively.
 			mergeSort(intArr, indexLeft, indexMid);
 			mergeSort(intArr, indexMid + 1, indexRight);
@@ -49,7 +49,7 @@ class MergeSortDemo{
 				}
 			}
 			if(j == arrRight.length) {
-				System.out.println("2-" + i + "," + j + "," + k);
+				//System.out.println("2-" + i + "," + j + "," + k);
 				//i--;	
 				for(; k <= indexRight; k++, i++) {
 					intArr[k] = arrLeft[i];
