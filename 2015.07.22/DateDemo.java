@@ -1,4 +1,4 @@
-/*DateDemo---Leibniz.Hu 2015.07.21
+/*DateDemo---Leibniz.Hu 2015.07.22
 * try Date class methods.
 @author Leibniz.Hu
 @version 1.0
