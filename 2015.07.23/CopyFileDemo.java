@@ -1,4 +1,4 @@
-/*CopyFileDemo---Leibniz.Hu 2015.07.21
+/*CopyFileDemo---Leibniz.Hu 2015.07.23
 * Use Reader and Writer to copy a file from D:\ to E:\ .
 @author Leibniz.Hu
 @version 1.0
