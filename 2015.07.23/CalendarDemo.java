@@ -1,4 +1,4 @@
-/*CalendarDemo---Leibniz.Hu 2015.07.21
+/*CalendarDemo---Leibniz.Hu 2015.07.23
 * Use TreeMap to count how many time each letter appears in a string.
 * return a string like "a(1)b(3)......"
 @author Leibniz.Hu
