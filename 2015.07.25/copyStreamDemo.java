@@ -18,7 +18,7 @@ class copyStreamDemo {
 	public static void copyStream1() throws IOException {
 		BufferedReader brTemp = new BufferedReader(new FileReader("1.txt"));
 		BufferedWriter bwTemp = new BufferedWriter(new FileWriter("1_copy.txt"));
-		copyBuffered(brTemp, bwTemp);
+		copyBuffered(brTemp, bwTemp, false);
 		brTemp.close();
 		bwTemp.close();
 	}
@@ -27,7 +27,7 @@ class copyStreamDemo {
 	public static void copyStream2() throws IOException {
 		BufferedReader brTemp = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bwTemp = new BufferedWriter(new FileWriter("2.txt"));
-		copyBufferedOver(brTemp, bwTemp);
+		copyBuffered(brTemp, bwTemp, true);
 		bwTemp.close();
 	}
 
@@ -35,7 +35,7 @@ class copyStreamDemo {
 	public static void copyStream3() throws IOException {
 		BufferedReader brTemp = new BufferedReader(new FileReader("1.txt"));
 		BufferedWriter bwTemp = new BufferedWriter(new OutputStreamWriter(System.out));
-		copyBuffered(brTemp, bwTemp);
+		copyBuffered(brTemp, bwTemp, false);
 		brTemp.close();
 	}
 
@@ -43,7 +43,7 @@ class copyStreamDemo {
 	public static void copyStream4() throws IOException {
 		BufferedReader brTemp = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bwTemp = new BufferedWriter(new OutputStreamWriter(System.out));
-		copyBufferedOver(brTemp, bwTemp);
+		copyBuffered(brTemp, bwTemp, true);
 	}
 
 	//5. Copy a string into a text file by given encode table.
@@ -54,22 +54,15 @@ class copyStreamDemo {
 		bwTemp.close();
 	}
 
-	public static void copyBuffered(BufferedReader brTemp, BufferedWriter bwTemp) throws IOException {
+	public static void copyBuffered(BufferedReader brTemp, BufferedWriter bwTemp, boolean overJudge) throws IOException {
 		String strTemp;
 		while((strTemp = brTemp.readLine()) != null) {
-			bwTemp.write(strTemp);
-			bwTemp.newLine();
-			bwTemp.flush();
-		}
-	}
-
-	public static void copyBufferedOver(BufferedReader brTemp, BufferedWriter bwTemp) throws IOException {
-		String strTemp;
-		while((strTemp = brTemp.readLine()) != null) {
-			if(strTemp.toLowerCase().equals("over")) {
-				break;
+			if(overJudge) {
+				if(strTemp.toLowerCase().equals("over")) {
+					break;
+				}
 			}
-			bwTemp.write(strTemp.toUpperCase());
+			bwTemp.write(strTemp);
 			bwTemp.newLine();
 			bwTemp.flush();
 		}
