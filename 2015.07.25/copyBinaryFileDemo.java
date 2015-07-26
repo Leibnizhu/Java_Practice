@@ -1,4 +1,4 @@
-/*copyBinaryFileDemo---Leibniz.Hu 2015.07.19
+/*copyBinaryFileDemo---Leibniz.Hu 2015.07.25
 * Copy a binary file use BufferedInputStream/BufferedOutputStream class.
 @author Leibniz.Hu
 @version 1.0
