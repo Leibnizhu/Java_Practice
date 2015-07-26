@@ -1,4 +1,4 @@
-/*MergeSortDemo---Leibniz.Hu 2015.07.19
+/*MergeSortDemo---Leibniz.Hu 2015.07.24
 * Try to implement merge-sort.
 @author Leibniz.Hu
 @version 1.0
