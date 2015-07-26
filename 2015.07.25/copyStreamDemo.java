@@ -1,5 +1,5 @@
 /*copyStreamDemo---Leibniz.Hu 2015.07.26
-* Copy a binary file use BufferedInputStream/BufferedOutputStream class.
+* Try to operate different stream.
 @author Leibniz.Hu
 @version 1.0
 */
