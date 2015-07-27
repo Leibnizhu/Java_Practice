@@ -36,6 +36,12 @@
 包括：小试Foreach语句，以及System类和Date类的方法
 * [2015.07.23](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.23)
 包括：尝试Calendar类的使用，以及IO类的复制文件简单小Demo
+* [2015.07.24](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.24)
+包括：归并排序的实现（递归）
+* [2015.07.25](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.25)
+包括：复制二进制文件，各种输入输出流的复制操作，键盘输入流操作等Demo
+* [2015.07.27](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.27)
+包括：File类Demo，包括列出剩余空间最大的盘，按需过滤文件列表显示
 
 ### 感想
 ---
