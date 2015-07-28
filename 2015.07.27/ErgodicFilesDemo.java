@@ -29,6 +29,7 @@ class ErgodicFilesDemo{
 		}
 	}
 	
+	//Return space and dash to complete a tree-like format.
 	public static String getTabString(int level) {
 		StringBuffer sb = new StringBuffer();
 		for(int i = 0; i < level; i++) {
