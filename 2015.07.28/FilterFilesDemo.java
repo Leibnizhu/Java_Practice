@@ -1,4 +1,4 @@
-/*FilterFilesDemo---Leibniz.Hu 2015.07.28
+/*FilterFilesDemoFilterFilesDemo---Leibniz.Hu 2015.07.28
 * Ergodic all files including files in sub-directories.
 * Lists all java files in a given directory into a file.
 @author Leibniz.Hu
