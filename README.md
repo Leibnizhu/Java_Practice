@@ -42,6 +42,8 @@
 包括：复制二进制文件，各种输入输出流的复制操作，键盘输入流操作等Demo
 * [2015.07.27](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.27)
 包括：File类Demo，包括列出剩余空间最大的盘，按需过滤文件列表显示
+* [2015.07.28](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.28)
+包括：文件深度搜索并过滤输出结果到文件Demo，及模拟运行次数限制的Demo
 
 ### 感想
 ---
