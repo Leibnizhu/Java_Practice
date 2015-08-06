@@ -44,6 +44,10 @@
 包括：File类Demo，包括列出剩余空间最大的盘，按需过滤文件列表显示
 * [2015.07.28](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.28)
 包括：文件深度搜索并过滤输出结果到文件，及模拟运行次数限制的，以及拆分合并文件等demo
+* [2015.08.03](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.03)
+包括：使用UDP协议局域网聊天工具以及使用TCP协议上传文件的Demo
+* [2015.08.06](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.06)
+包括：使用反射机制模拟电脑插入拔出不同USB设备的Demo
 
 ### 感想
 ---
