@@ -7,20 +7,56 @@
 import java.io.*;
 import java.util.*;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.net.*;
 
 class WebCrawlerDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		//Web address of searching "联系邮箱" in bing.com
-		URL url = new URL("http://cn.bing.com/search?q=%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1");
-		//URL url = new URL(http://cn.bing.com/search?q=contact+email);  //Web address of searching "contact email" in bing.com
+		//URL url = new URL("http://cn.bing.com/search?q=%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1");
+		URL url = new URL("http://cn.bing.com/search?q=contact+email");  //Web address of searching "contact email" in bing.com
 		
-		webCrawler(url, 10);
+		//File to store email addresses.
+		BufferedWriter fwTest = new BufferedWriter(new FileWriter("email.txt"));
+		
+		//Start web crawler.
+		webCrawler(url, fwTest, 10);
 	}
 	
-	/* @param URL url : parent url, read hyper-links in this url.
-	 * @param int level : how many levels the recursions will go on.
+	/* @param URL : parent url, read hyper-links in this url.
+	 * @param BufferedWriter : a buffered file writer to store email addresss.
+	 * @param int : how many levels the recursions will go on.
 	 */
-	public static List<String> webCrawler(URL url, int level) {
-		
+	public static void webCrawler(URL url, BufferedWriter bw, int level) throws Exception {
+		try{
+			System.out.println("Searching in level " + level + " web: " + url);
+			BufferedReader brWeb = new BufferedReader(new InputStreamReader(url.openStream()));
+			//Regax for email address.
+			Pattern pEmail = Pattern.compile("\\w+@\\w+(\\.\\w+)+");
+			//Regax for hyper links.
+			Pattern pHyperlink = Pattern.compile("<\\s*a\\s*href\\s*=['\"](http.+?)['\"]");
+			
+			String line = null;
+			while((line = brWeb.readLine()) != null) {
+				Matcher mHyperlink = pHyperlink.matcher(line);
+				Matcher mEmail = pEmail.matcher(line);
+				//while find a new hyper link, and recursion level is bigger then 1, go on search it.
+				while(mHyperlink.find()) {
+					if(level > 0){
+						URL sonWeb = new URL(mHyperlink.group(1));
+						webCrawler(sonWeb, bw, --level);
+					}
+				}
+				while(mEmail.find()) {
+					bw.write(mEmail.group());
+					bw.newLine();
+					bw.flush();
+				}
+			}
+		} catch ( SocketException ce) {
+			System.out.println(ce);
+			return;
+		}
 	}
 }
