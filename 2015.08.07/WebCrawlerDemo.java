@@ -1,8 +1,12 @@
-/* WebCrawlerDemo---Leibniz.Hu 2015.08.09
+/* WebCrawlerDemo---Leibniz.Hu 2015.08.07
  * Try to achieve a web crawler. Recursion by all hyper-links in a web.
  * Find out all mail address in every web. 
  @ author Leibniz.Hu
  @ version 1.0
+ * History:
+ * 2015.08.07 Created. Add main frame.
+ * 2015.08.08 Coded webCrawler() function.
+ * 2015.08.09 Add a HashSet to store scanned URLs, to avoid repetition.
  */
 import java.io.*;
 import java.util.*;
