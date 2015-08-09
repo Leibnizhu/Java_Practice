@@ -26,9 +26,9 @@ class WebCrawlerDemo {
 		
 		//File to store email addresses.
 		BufferedWriter fwTest = new BufferedWriter(new FileWriter("email.txt"));
-		
+		new File("error.log").delete();
 		//Start web crawler.
-		webCrawler(url, fwTest, 10);
+		webCrawler(url, fwTest, 9);
 	}
 	
 	/* @param URL : parent url, read hyper-links in this url.
@@ -60,8 +60,12 @@ class WebCrawlerDemo {
 					URL sonWeb = new URL(strURL);
 					try{
 						webCrawler(sonWeb, bw, --level);
-					}catch ( SocketException ce) {
-						System.out.println(ce);
+					}catch ( Exception ce) {
+						BufferedWriter temp = new BufferedWriter(new FileWriter("error.log",true));
+						temp.write(ce.toString());
+						temp.flush();
+						temp.close();
+						//System.out.println(ce);
 						continue;
 					}
 				}
