@@ -8,6 +8,7 @@
  * 2015.08.08 Coded webCrawler() function.
  * 2015.08.09 Add a HashSet to store scanned URLs and Emails, to avoid repetition.
  *            Create multi-thread version, and fixed some bugs.
+ * 2015.08.10 Fixed some bugs, add thread counts detecting and web address type detecting.
  */
 import java.io.*;
 import java.util.*;
@@ -22,18 +23,30 @@ class WebCrawlerDemo2 {
 	private static HashSet<String> hsEmail = new HashSet<String>();
 
 	public static void main(String[] args) throws Exception {
-		//Web address of searching "联系邮箱" in bing.com
-		URL url = new URL("http://cn.bing.com/search?q=%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1");
-		//url = new URL("http://cn.bing.com/search?q=contact+email");  //Web address of searching "contact email" in bing.com
-		url = new URL("http://tieba.baidu.com/f?ie=utf-8&kw=%E9%82%AE%E7%AE%B1&fr=search");
+		URL url;
+		if(args.length == 1) {
+			url = new URL(args[0]);
+		} else {
+			//url = new URL("http://cn.bing.com/search?q=%E8%81%94%E7%B3%BB%E9%82%AE%E7%AE%B1");//Searching "联系邮箱" in bing.com
+			url = new URL("http://cn.bing.com/search?q=contact+email");  //Searching "contact email" in bing.com
+			//url = new URL("http://tieba.baidu.com/f?ie=utf-8&kw=%E9%82%AE%E7%AE%B1&fr=search");
+		}
 
 		//File to store email addresses.
-		BufferedWriter fwTest = new BufferedWriter(new FileWriter("email.txt"));
+		BufferedWriter fwTest = new BufferedWriter(new FileWriter("email.txt", true));
 		//Clear error log file.
 		new File("error.log").delete();
 
+		//Read existed email addresses in txt file, and store to HashSet
+		BufferedReader frTest = new BufferedReader(new FileReader("email.txt"));
+		String line = null;
+		while((line = frTest.readLine()) != null) {
+			hsEmail.add(line);
+		}
+		frTest.close();
+
 		//Start web crawler.
-		new Thread(new webCrawler(url, fwTest, 10, hsWeb, hsEmail)).start();
+		new Thread(new webCrawler(url, fwTest, 10, hsWeb, hsEmail, hsEmail.size())).start();
 
 		//fwTest.close();
 		System.out.println("main() finished.");
@@ -50,13 +63,15 @@ class webCrawler implements Runnable {
 	int level;
 	HashSet<String> hsWeb;
 	HashSet<String> hsEmail;
+	int originSize;
 
-	webCrawler(URL url, BufferedWriter bw, int level, HashSet<String> hsWeb, HashSet<String> hsEmail) {
+	webCrawler(URL url, BufferedWriter bw, int level, HashSet<String> hsWeb, HashSet<String> hsEmail, int originSize) {
 		this.url = url;
 		this.bw = bw;
 		this.level = level;
 		this.hsWeb = hsWeb;
 		this.hsEmail = hsEmail;
+		this.originSize = originSize;
 	}
 
 	public void run() {
@@ -64,7 +79,7 @@ class webCrawler implements Runnable {
 		try {
 			BufferedReader brWeb = new BufferedReader(new InputStreamReader(url.openStream()));
 			//Regax for email address.
-			Pattern pEmail = Pattern.compile("\\w+@\\w+(\\.\\w+)+");
+			Pattern pEmail = Pattern.compile("\\w+@\\w+(\\.\\w{1,4})+");
 			//Regax for hyper links.
 			Pattern pHyperlink = Pattern.compile("<\\s*a\\s*href\\s*=['\"](http.+?)['\"]");
 
@@ -77,15 +92,23 @@ class webCrawler implements Runnable {
 					if(level > 0) {
 						String strURL = mHyperlink.group(1);
 						//Judge if this url is scanned already, or stored web address is too large, then ignore it.
-						if(hsWeb.contains(strURL) || hsWeb.size() > 10000) {
+						if(hsWeb.contains(strURL)) {
 							break;
+						}
+						while(Thread.activeCount() >= 1000) {
+							Thread.sleep(100);
 						}
 						//Not scanned before,then store it into HashSet and scan it.
 						hsWeb.add(strURL);
 						URL sonWeb = new URL(strURL);
+						if(strURL.endsWith(".exe") || strURL.endsWith(".rar") ||strURL.endsWith(".zip") || strURL.endsWith(".jpg")) {
+							break;
+						}
 
 						//webCrawler(sonWeb, bw, --level);
-						new Thread(new webCrawler(sonWeb, bw, level-1, hsWeb, hsEmail)).start();
+						Thread th = new Thread(new webCrawler(sonWeb, bw, level-1, hsWeb, hsEmail, originSize));
+						th.setPriority(level);
+						th.start();
 						//System.out.println("Found. Level " + level + " : " + strURL);
 						/* }catch ( Exception e) {
 							BufferedWriter temp = new BufferedWriter(new FileWriter("error.log",true));
@@ -97,7 +120,7 @@ class webCrawler implements Runnable {
 						} */
 					}
 				}
-				//System.out.println("Hyper Link Finished. Level " + level + " web: " + url);
+				System.out.println("Hyper Link Finished. Level " + level + " web: " + url);
 				//Check email addresses  and store them into file.
 				while(mEmail.find()) {
 					String strEmail = mEmail.group();
@@ -106,10 +129,12 @@ class webCrawler implements Runnable {
 					} else {
 						hsEmail.add(strEmail);
 						//System.out.println(mEmail.group());
-						bw.write(strEmail);
-						bw.newLine();
-						bw.flush();
-						System.out.println(hsEmail.size() + " Email addresses found.");
+						synchronized(this) {
+							bw.write(strEmail);
+							bw.newLine();
+							bw.flush();
+						}
+						System.out.println((hsEmail.size() - originSize) + "/" + hsEmail.size() + " Emails found: " + strEmail);
 					}
 				}
 			}
@@ -117,7 +142,15 @@ class webCrawler implements Runnable {
 				System.out.println("Finished. Level " + level);
 			} */
 		} catch (Exception e) {
-			System.out.println("Level "level + " : " + e);
+			/* try {
+				BufferedWriter temp = new BufferedWriter(new FileWriter("error.log",true));
+				temp.write("Level " + level + " " + url + " : " + e.toString());
+				temp.newLine();
+				temp.flush();
+				temp.close();
+			} catch(Exception e2) {
+			} */
+			//System.out.println("Level " + level + " : " + e);
 		}
 	}
 }
