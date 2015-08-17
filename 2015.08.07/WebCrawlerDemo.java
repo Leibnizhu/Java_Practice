@@ -25,7 +25,7 @@ class WebCrawlerDemo {
 		//URL url = new URL("http://cn.bing.com/search?q=contact+email");  //Web address of searching "contact email" in bing.com
 		
 		//File to store email addresses.
-		BufferedWriter fwTest = new BufferedWriter(new FileWriter("email.txt"));
+		BufferedWriter fwTest = new BufferedWriter(new FileWriter("email0.txt"));
 		new File("error.log").delete();
 		//Start web crawler.
 		webCrawler(url, fwTest, 9);
