@@ -65,7 +65,8 @@ class webCrawler implements Runnable {
 	HashSet<String> hsWeb;
 	HashSet<String> hsEmail;
 	int originSize;
-
+	static int threadNum = 5000;
+		
 	webCrawler(URL url, BufferedWriter bw, int level, HashSet<String> hsWeb, HashSet<String> hsEmail, int originSize) {
 		this.url = url;
 		this.bw = bw;
@@ -96,8 +97,9 @@ class webCrawler implements Runnable {
 						if(hsWeb.contains(strURL)) {
 							continue;
 						}
-						while(Thread.activeCount() >= 5000) {
+						while(Thread.activeCount() >= threadNum) {
 							System.out.println("Thread stack full!");
+							threadNum += 2;
 							Thread.sleep(10000);
 						}
 						//Not scanned before,then store it into HashSet and scan it.
