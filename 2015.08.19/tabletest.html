@@ -5,41 +5,88 @@
 		<style type="text/css">
 			table{
 				border:#CCCCCC 1px solid;
-				width:150px;
 			}
 			
 			table td{
 				border:#CCCCCC 1px solid;
-				background-color:#AAAAEE
+				background-color:#AAAAEE;
 			}
 		</style>
 	</head>
 	<body>
 		<script type="text/javascript">
-			function crtTbl(){
+			onload = function(){
+				document.getElementsByName("delTable")[0].disabled = true;
+			};
+			
+			function crtTable(){
 				var oTableNode = document.createElement("table");
 				oTableNode.setAttribute("id", "tableId");
 				
 				var rowNum = parseInt(document.getElementsByName("rowNum")[0].value);
 				var colNum = parseInt(document.getElementsByName("colNum")[0].value);
+				//alert(rowNum+"::"+colNum);
 				
 				for(var i=1; i<=rowNum; i++) {
 					var oTrNode = oTableNode.insertRow();
 					for(var j=1; j<=colNum; j++) {
 						var oTdNode = oTrNode.insertCell();
-						oTdNode.innerHTML = i+":::"+j;
+						oTdNode.innerHTML = "第"+i+"行::第"+j+"列";
 					}
 				}
 				
 				document.getElementsByTagName("div")[0].appendChild(oTableNode);
-				document.getElementsByName("crtTable")[0].disabled = true;
+				
 				document.getElementsByName("delTable")[0].disabled = false;
+				document.getElementsByName("crtTable")[0].disabled = true;
+			}
+			
+			function delTable(){
+				var oTableNode = document.getElementById("tableId");
+				oTableNode.parentNode.removeChild(oTableNode);
+				
+				document.getElementsByName("delTable")[0].disabled = true;
+				document.getElementsByName("crtTable")[0].disabled = false;
+			}
+			
+			function delRow(){
+				var oTableNode = document.getElementById("tableId");
+				if(!oTableNode){
+					alert("表格不存在!");
+					return;
+				}
+				var delRowNum = parseInt(document.getElementsByName("delRow")[0].value);
+				if(delRowNum>=1 && delRowNum<=oTableNode.rows.length){
+					oTableNode.deleteRow(delRowNum-1);
+				} else {
+					alert("要删除的行不存在!");
+				}
+			}
+			
+			function delCol(){
+				var oTableNode = document.getElementById("tableId");
+				if(!oTableNode){
+					alert("表格不存在!");
+					return;
+				}
+				var delColNum = parseInt(document.getElementsByName("delCol")[0].value);
+				if(delColNum>=1 && delColNum<=oTableNode.rows[0].cells.length){
+					for(var i=0; i<=oTableNode.rows.length; i++){
+						oTableNode.rows[i].deleteCell(delColNum-1);					
+					}
+				} else {
+					alert("要删除的列不存在!");
+				}
 			}
 		</script>
+		
 		行数：<input type="text" name="rowNum" />列数：<input type="text" name="colNum" />
-		<input type="button" value="创建表格" name="crtTbl" onclick="crtTable()">
-		<input type="button" value="删除表格" name="delTbl" onclick="delTable()">
-		<hr />
+		<input type="button" value="创建表格" name="crtTable" onclick="crtTable()"/>
+		<input type="button" value="删除表格" name="delTable" onclick="delTable()"/>
+		<hr/>
+		<input type="button" value="删除" onclick="delRow()"/><input type="text" name="delRow" />行<br/>
+		<input type="button" value="删除" onclick="delCol()"/><input type="text" name="delCol" />列<br/>
+		<hr/>
 		<div></div>
 	</body>
 </html>
