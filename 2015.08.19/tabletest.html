@@ -1,0 +1,46 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+		<title>测试DOM修改表格</title>
+		<style type="text/css">
+			table{
+				border:#CCCCCC 1px solid;
+				width:150px;
+			}
+			
+			table td{
+				border:#CCCCCC 1px solid;
+				background-color:#AAAAEE
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function crtTbl(){
+				var oTableNode = document.createElement("table");
+				oTableNode.setAttribute("id", "tableId");
+				
+				var rowNum = parseInt(document.getElementsByName("rowNum")[0].value);
+				var colNum = parseInt(document.getElementsByName("colNum")[0].value);
+				
+				for(var i=1; i<=rowNum; i++) {
+					var oTrNode = oTableNode.insertRow();
+					for(var j=1; j<=colNum; j++) {
+						var oTdNode = oTrNode.insertCell();
+						oTdNode.innerHTML = i+":::"+j;
+					}
+				}
+				
+				document.getElementsByTagName("div")[0].appendChild(oTableNode);
+				document.getElementsByName("crtTable")[0].disabled = true;
+				document.getElementsByName("delTable")[0].disabled = false;
+			}
+		</script>
+		行数：<input type="text" name="rowNum" />列数：<input type="text" name="colNum" />
+		<input type="button" value="创建表格" name="crtTbl" onclick="crtTable()">
+		<input type="button" value="删除表格" name="delTbl" onclick="delTable()">
+		<hr />
+		<div></div>
+	</body>
+</html>
+	
