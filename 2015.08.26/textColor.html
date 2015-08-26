@@ -1,0 +1,55 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>选择更换文本字体颜色</title>
+		<style type="text/css">
+			#text{
+				width:500px;
+			}
+			
+			.clrclass{
+				height:50px;
+				width:50px;
+				float:left;
+				margin:20px;
+			}
+		</style>
+		<script type="text/javascript">
+			function changeColor1(node){
+				document.getElementById("text").style.color = node.style.backgroundColor;
+			}
+			
+			function changeColor2(){
+				var oSelNode = document.getElementsByName("selectColor1")[0];
+				document.getElementById("text").style.color = oSelNode.options[oSelNode.selectedIndex].value;
+			}
+			
+			function changeColor3(){
+				var oSelNode = document.getElementsByName("selectColor2")[0];
+				document.getElementById("text").style.color = oSelNode.options[oSelNode.selectedIndex].value;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="text">			人呐就都不知道，自己就不可以预料。一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程，我绝对不知道，我作为一个上海市委书记怎么把我选到北京去了，所以邓小平同志同我讲话，说“中央都决定了，你来当总书记”我说另请高明吧。我实在我也不是谦虚，我一个上海市委书记怎么到北京来了呢？但是呢，小平同志讲“大家已经研究决定了”，所以后来我就念了两首诗，叫“苟利国家生死以，岂因祸福避趋之”，所以我就到了北京。<br/>
+2009年江泽民视察中国联合工程公司时，回顾自己担任国家领导人期间的工作成绩。</br>
+到了北京我干了这十几年也没有什么别的，大概三件事：一个，确立了社会主义市场经济；第二个，把邓小平理论列入党章；第三个，就是“三个代表”。如果说还有一点成绩就是军队一律不得经商，這個對軍隊的命運有很大的關係。因為我後來又幹了一年零八個月，等於我在部隊幹了15年軍委主席。还有九八年的抗洪也是很大的。但这些都是次要的，我主要的我就是三件事情，很惭愧，就做了一点微小的工作。<br/>
+		</div>
+		<hr/>
+		<div class="clrclass" id="clr1" style="background-color:red" onclick="changeColor1(this)"></div>
+		<div class="clrclass" id="clr2" style="background-color:green" onclick="changeColor1(this)"></div>
+		<div class="clrclass" id="clr3" style="background-color:blue" onclick="changeColor1(this)"></div>
+		<select name="selectColor1" onchange="changeColor2()">
+			<option value="black">--选择颜色--</option>
+			<option value="red">红色</option>
+			<option value="green">绿色</option>
+			<option value="blue">蓝色</option>
+		</select><br/></br><br/>
+		<select name="selectColor2" style="width:100px" onchange="changeColor3()">
+			<option style="background-color:black" value="black">--选择颜色--</option>
+			<option style="background-color:red" value="red"></option>
+			<option style="background-color:green" value="green"></option>
+			<option style="background-color:blue" value="blue"></option>
+		</select>
+	</body>
+</html>
