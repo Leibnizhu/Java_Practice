@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>选择更换文本字体颜色</title>
+		<style type="text/css">
+			select{
+				width:100px;
+			}
+		</style>
+		<script type="text/javascript">
+			function selCity(){
+				var cities = [	['选择城市'],
+								['广州', '深圳', '顺德', '南海'],
+								['台北', '桃园', '花莲', '高雄'],
+								['海口', '三亚', '屯昌', '文昌'],
+								['海淀区', '朝阳区', '昌平', '顺义']	];
+				var oSelProvNode = document.getElementById("prov");
+				var oSelCityNode = document.getElementById("city");
+				var index = oSelProvNode.selectedIndex;
+				//清除城市列表原有项目
+				oSelCityNode.length = 0;
+				//城市列表添加新项目
+				for(var i = 0; i < cities[index].length; i++){
+					var oOptionNode = document.createElement("option");
+					oOptionNode.innerHTML = cities[index][i];
+					oSelCityNode.appendChild(oOptionNode);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<select id="prov" onchange="selCity()">
+			<option>-选择省份-</option>
+			<option>广东</option>
+			<option>台湾</option>
+			<option>海南</option>
+			<option>北京</option>
+		</select>
+		<select id="city">
+			<option>-选择城市-</option>
+		</select>
+	</body>
+</html>
