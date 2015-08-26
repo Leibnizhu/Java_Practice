@@ -1,0 +1,211 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+		<title>收件箱邮件列表</title>
+		<style type="text/css">
+			table{
+				border:#2299DD 1px solid;
+				border-collapse:collapse;
+				margin:20px;
+			}
+			
+			th{
+				color:#2299DD;
+				border:#2299DD 1px solid;
+				padding:5px;
+			}
+			
+			td{
+				border:#2299DD 1px solid;
+				padding:2px;
+			}
+
+			.odd{
+				background-color:#DDDDFF;
+			}
+			.even{
+				background-color:#BBBBDD;
+			}
+			.over{
+				background-color:#FFAAAA;
+			}
+		</style>
+		<script type="text/javascript">
+			//用于保存鼠标所在的行的CSS选择器类名
+			var rowSelName;
+			
+			//加载完毕后刷新颜色
+			onload = function(){
+				setColor();
+			}
+			
+			//显示行交错颜色
+			function setColor(){
+				//获得table节点和所有行
+				var oTableNode = document.getElementById("mailTable");
+				var collRowNodes = oTableNode.rows;
+				//遍历所有行，忽略表头
+				for(var i = 1; i < collRowNodes.length; i++){
+					//根据行数用类选择器改变CSS样式
+					if(i%2){
+						collRowNodes[i].className = "even";
+					} else {
+						collRowNodes[i].className = "odd";
+					}
+					//添加鼠标经过高亮的效果，用CSS类选择器
+					collRowNodes[i].onmouseover = function(){
+						rowSelName = this.className;
+						this.className = "over";
+					}
+					//鼠标移出后取消高亮，恢复原来的CSS类选择器
+					collRowNodes[i].onmouseout = function(){
+						this.className = rowSelName;
+					}
+				}
+			}
+			
+			//全选，除了邮件列表每一项要选中，还要选中另一个全选复选框
+			function checkAll(node){
+				//处理邮件列表的复选框
+				var collMailNodes = document.getElementsByName("mail");
+				for(var i = 0; i < collMailNodes.length; i++){
+					collMailNodes[i].checked = node.checked;
+				}
+				//处理全选复选框
+				var collCheckallNodes = document.getElementsByName("all");
+				for(var i = 0; i < collCheckallNodes.length; i++){
+					collCheckallNodes[i].checked = node.checked;
+				}
+				
+			}
+			
+			//全选/取消全选/反选
+			function checkAllByButton(type){
+				//处理邮件列表的复选框
+				var collMailNodes = document.getElementsByName("mail");
+				for(var i = 0; i < collMailNodes.length; i++){
+					if(type>1){
+						collMailNodes[i].checked = !collMailNodes[i].checked; // 反选
+					} else {
+						collMailNodes[i].checked = type;//type：1-全选，2-取消全选
+					}
+				}
+				//处理全选复选框
+				if(type<2){
+					var collCheckallNodes = document.getElementsByName("all");
+					for(i = 0; i < collCheckallNodes.length; i++){
+						collCheckallNodes[i].checked = type;
+					}
+				}
+			}
+			
+			function deleteMail(){
+				if (!confirm("确定删除所有选中的邮件吗？")){
+					return;
+				}
+				var collMailNodes = document.getElementsByName("mail");
+				for(var i = 0; i < collMailNodes.length; i++){
+					if(collMailNodes[i].checked){
+						var oRowNode = collMailNodes[i].parentNode.parentNode;
+						oRowNode.parentNode.removeChild(oRowNode);
+						i--;
+					}
+				}
+				setColor();
+			}
+		</script>
+	</head>
+	<body>
+		<table id="mailTable">
+			<tr>
+				<th><input type="checkbox" name="all" onclick="checkAll(this)" />全选</th>
+				<th>发件人</th>
+				<th>邮件名称</th>
+				<th>邮件附属信息</th>
+			</tr>
+			
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy1</td>
+				<td>邮件标题1</td>
+				<td>邮件的预览信息1</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy2</td>
+				<td>邮件标题2</td>
+				<td>邮件的预览信息2</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy3</td>
+				<td>邮件标题3</td>
+				<td>邮件的预览信息3</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy4</td>
+				<td>邮件标题4</td>
+				<td>邮件的预览信息4</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy5</td>
+				<td>邮件标题5</td>
+				<td>邮件的预览信息5</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy6</td>
+				<td>邮件标题6</td>
+				<td>邮件的预览信息6</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy11</td>
+				<td>邮件标题11</td>
+				<td>邮件的预览信息11</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy22</td>
+				<td>邮件标题22</td>
+				<td>邮件的预览信息22</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy33</td>
+				<td>邮件标题33</td>
+				<td>邮件的预览信息33</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy44</td>
+				<td>邮件标题44</td>
+				<td>邮件的预览信息44</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy55</td>
+				<td>邮件标题55</td>
+				<td>邮件的预览信息55</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="mail" /></td>
+				<td>Jucy66</td>
+				<td>邮件标题66</td>
+				<td>邮件的预览信息66</td>
+			</tr>
+			
+			<tr>
+				<th><input type="checkbox" name="all" onclick="checkAll(this)"  />全选</th>
+				<th colspan="3">
+					<input type="button" value="全选" onclick="checkAllByButton(1)" />
+					<input type="button" value="取消全选" onclick="checkAllByButton(0)"  />
+					<input type="button" value="反选" onclick="checkAllByButton(2)"  />
+					<input type="button" value="删除所选邮件" onclick="deleteMail()" />
+				</th>
+			</tr>
+		</table>
+	</body>
+</html>
