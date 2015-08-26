@@ -1,0 +1,35 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>模拟增加附件</title>
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript">
+			function addAttach(){
+				//获得表格节点
+				var oTableNode = document.getElementById("attachment");
+				//增加一行
+				var oTrNode = oTableNode.insertRow();
+				//增加文件选择栏的单元格
+				var oTdFile = oTrNode.insertCell();
+				//增加删除附件的单元格
+				var oTdDel = oTrNode.insertCell();
+				//填充单元格内容
+				oTdFile.innerHTML = "<input type='file'/>";
+				oTdDel.innerHTML = "<a href='javascript:void(0)' onclick='deleteAttach(this)'>删除附件</a>";
+			}
+			
+			function deleteAttach(node){
+				node.parentNode.parentNode.parentNode.removeChild(node.parentNode.parentNode);
+			}
+		</script>
+	</head>
+	<body>
+		<table id="attachment">
+			<tr>
+				<td><a href="javascript:void(0)" onclick="addAttach()">添加附件<a></tr>
+			</tr>
+		</table>
+	</body>
+</html>
