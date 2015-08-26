@@ -1,0 +1,72 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>表单信息校验</title>
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript">
+			function check(name, spanId, reg, passInfo, failInfo){
+				//获取指定name的文本框文本
+				var valText = document.getElementsByName(name)[0].value;
+				//获取指定的信息显示span节点
+				var oSpanNode = document.getElementById(spanId);
+				//判断是否满足正则表达式
+				if(reg.test(valText)){
+					oSpanNode.innerHTML = passInfo.fontcolor("green");
+					return true;
+				} else {
+					oSpanNode.innerHTML = failInfo.fontcolor("red");
+					return false;
+				}
+			}
+			
+			function checkUserName(){
+				var reg = /^[a-z][a-z0-9_]{4,}$/i;
+				return check("username", "usernameSpan", reg,"用户名正确","用户名应由5位以上大小写字母/数字/下划线组成并以字母开头！");
+			}
+			
+			function checkPswd(){
+				var reg = /^[a-z0-9]{6,}$/i;
+				return check("pswd", "pswdSpan", reg,"密码格式正确","密码应由6位以上大小写字母/数字组成！");
+			}
+			
+			function checkRepswd(){
+				var valPswd = document.getElementsByName("pswd")[0].value;
+				var valRepswd = document.getElementsByName("repswd")[0].value;
+				var oSpanNode = document.getElementById("repswdSpan");
+				if(valPswd == valRepswd){
+					oSpanNode.innerHTML = "密码正确".fontcolor("green");
+					return true;
+				} else {
+					oSpanNode.innerHTML = "两次输入密码不一致！".fontcolor("red");
+					return false;
+				}				
+			}
+			
+			function checkEmail(){
+				var reg = /^\w+@\w+(\.\w+)+$/i;
+				return check("email", "emailSpan", reg,"邮箱正确","邮箱格式不正确！");
+			}
+			
+			function infoCheck(){
+				if(checkUserName() && checkPswd() && checkRepswd() && checkEmail()){
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<form id="userInfo" onsubmit="return infoCheck()">
+			用户名&nbsp：<input type="text" name="username" onblur="checkUserName()"><span id="usernameSpan"></span><br/>
+			输入密码：<input type="password" name="pswd" onblur="checkPswd()"><span id="pswdSpan"></span><br/>
+			确认密码：<input type="password" name="repswd" onblur="checkRepswd()"><span id="repswdSpan"></span><br/>
+			电子邮箱：<input type="text" name="email" onblur="checkEmail()"><span id="emailSpan"></span><br/>
+			<input type="submit" value="提交">
+		</form>
+	</body>
+</html>
