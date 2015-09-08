@@ -50,6 +50,12 @@
 包括：使用反射机制模拟电脑插入拔出不同USB设备的Demo
 * [2015.08.07](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.07)
 包括：两个网页爬虫的Demo，抓取网页中的电子邮箱地址，一个是单线程一个是多线程
+* [2015.08.19](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.19)
+包括：JavaScript练习，创建表格、关闭列表及增删行的Demo
+* [2015.08.26](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.26)
+包括：JavaScript练习，添加附件、全选框、邮件列表、二级城市选择、改变文字颜色及表格行交错颜色的Demo
+* [2015.08.31](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.31)
+包括：分别基于JAXP DOM、SAX和Dom4j的简单xml增删改查操作Demo
 
 ### 感想
 ---
