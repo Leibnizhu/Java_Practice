@@ -10,10 +10,10 @@
 <body>
 	<table border="1">
 		<tr>
-			<td>编号</td>
-			<td>标题</td>
-			<td>价格</td>
-			<td>操作</td>
+			<td align="center">编号</td>
+			<td align="center">标题</td>
+			<td align="center">价格</td>
+			<td align="center">操作</td>
 		</tr>
 		<!-- 获得request作用的值bookList，展示 -->
 		<c:forEach items="${requestScope.bookList}" var="book">
@@ -22,8 +22,8 @@
 				<td>${book.title}</td>
 				<td>${book.price}</td>
 				<td>
-					<input type="button" value="修改"/>
-					<input type="button" value="删除"/>
+					<input type="button" value="修改" action=""/>
+					<input type="button" value="删除" action=""/>
 				</td>
 			</tr>
 		</c:forEach>	

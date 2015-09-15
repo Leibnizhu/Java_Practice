@@ -39,7 +39,7 @@ public class BookDAO {
 	 * @throws UnsupportedEncodingException
 	 */
 	public XMLWriter getWriter() throws UnsupportedEncodingException, FileNotFoundException {
-		return new XMLWriter(new FileOutputStream("books.xml"));
+		return new XMLWriter(new FileOutputStream(path));
 	}
 
 	/**
@@ -117,30 +117,46 @@ public class BookDAO {
 		return new Book(id, title, price);
 	}
 
-	public void addBook(String id, String title, String price) throws DocumentException, IOException {
+	/**
+	 * @param id
+	 * @param title
+	 * @param price
+	 * @return 是否创建成功：false表示该id对应书本已存在，true表示创建成功
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
+	public boolean addBook(String id, String title, String price) throws DocumentException, IOException {
 		org.dom4j.Document doc = getDoc();
 		Element rootEle = doc.getRootElement();
-
-		// 创建Book元素
-		Element newbook = DocumentHelper.createElement("book");
-		// 新建ID属性并添加到book元素中
-		Attribute attrId = DocumentHelper.createAttribute(newbook, "id", id);
-		newbook.add(attrId);
-		// 创建title子元素，并添加到book元素中
-		Element titleEle = DocumentHelper.createElement("title");
-		titleEle.setText(title);
-		newbook.add(titleEle);
-		// 创建price子元素，并添加到book元素中
-		Element priceEle = DocumentHelper.createElement("price");
-		priceEle.setText(price);
-		newbook.add(priceEle);
-		// 将新book元素添加到根元素中
-		rootEle.add(newbook);
-
-		// 写入books。xml
-		XMLWriter writer = getWriter();
-		writer.write(doc);
-		writer.close();
+		
+		if(!this.isExist(id)){
+			// 创建Book元素
+			Element newbook = rootEle.addElement("book");
+			// 新建ID属性并添加到book元素中
+			newbook.addAttribute("id", id);
+			// 创建title子元素，并添加到book元素中
+			newbook.addElement("title").setText(title);
+			// 创建price子元素，并添加到book元素中
+			newbook.addElement("price").setText(price);
+			
+			// 写入books。xml
+			XMLWriter writer = getWriter();
+			writer.write(doc);
+			writer.close();
+			
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param book
+	 * @return 是否创建成功：false表示该id对应书本已存在，true表示创建成功
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
+	public boolean addBook(Book book) throws DocumentException, IOException{
+		return this.addBook(book.getId(), book.getTitle(), book.getPrice());
 	}
 
 	public boolean updateBook(String id, String title, String price) throws DocumentException, IOException {
