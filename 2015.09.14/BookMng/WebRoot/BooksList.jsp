@@ -18,13 +18,14 @@
 
 		<c:forEach items="${requestScope.bookList}" var="book">
 			<c:url value="/preUpdateBookServ?bookID=${book.id}" var="preUpBookServ"></c:url>
+			<c:url value="/deleteBookServ?bookID=${book.id}" var="delBookServ"></c:url>
 			<tr>
 				<td>${book.id}</td>
 				<td>${book.title}</td>
 				<td>${book.price}</td>
 				<td>
 					<a href="${preUpBookServ}">修改</a>
-					<a href="${preUpBookServ}">删除</a>
+					<a href="${delBookServ}">删除</a>
 				</td>
 			</tr>
 		</c:forEach>	
