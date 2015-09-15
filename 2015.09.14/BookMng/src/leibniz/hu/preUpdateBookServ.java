@@ -1,7 +1,6 @@
 package leibniz.hu;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.dom4j.DocumentException;
 
-public class UpdateBookServ extends HttpServlet {
+public class preUpdateBookServ extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public UpdateBookServ() {
+	public preUpdateBookServ() {
 		super();
 	}
 
@@ -48,30 +47,20 @@ public class UpdateBookServ extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		//Get book parameters from request header
-		String id = request.getParameter("id");
-		String title = request.getParameter("title");
-		String price = request.getParameter("price");
-		//create DAO and new book object
+		//System.out.println("test");
+		//Get book ID from request header
+		String id = request.getParameter("bookID");
 		BookDAO bookDao = new BookDAO();
-		Book newbook = new Book(id, title, price);
-		//Call DAO method to update a new book
-		boolean success = false;
 		try {
-			success = bookDao.updateBook(newbook);
+			Book book = bookDao.getBookById(id);
+			if(book != null){				
+				//Send it to next jsp to handle it
+				request.setAttribute("book",book);
+				request.getRequestDispatcher("/updateBook.jsp").forward(request, response);
+			}
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
-		PrintWriter out = response.getWriter();
-		//judge success of fail to notice user
-		if(success){
-			out.print("修改成功！<br/>");
-		} else {
-			out.print("不存在ID为 " + id + " 的图书！不能进行修改！<br/>");
-		}
-		String jumpURL = request.getContextPath() + "/getAllBook";
-		out.print("将在3秒内自动跳转到查询页面...<a href='" + jumpURL +"'>手动跳转</a>...");
-		response.setHeader("refresh", "3;url=" + jumpURL);
 	}
 
 }

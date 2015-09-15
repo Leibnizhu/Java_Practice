@@ -15,15 +15,16 @@
 			<td align="center">价格</td>
 			<td align="center">操作</td>
 		</tr>
-		<!-- 获得request作用的值bookList，展示 -->
+
 		<c:forEach items="${requestScope.bookList}" var="book">
+			<c:url value="/preUpdateBookServ?bookID=${book.id}" var="preUpBookServ"></c:url>
 			<tr>
 				<td>${book.id}</td>
 				<td>${book.title}</td>
 				<td>${book.price}</td>
 				<td>
-					<input type="button" value="修改" action=""/>
-					<input type="button" value="删除" action=""/>
+					<a href="${preUpBookServ}">修改</a>
+					<a href="${preUpBookServ}">删除</a>
 				</td>
 			</tr>
 		</c:forEach>	

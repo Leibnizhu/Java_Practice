@@ -48,6 +48,7 @@ public class BookDAO {
 	 * @throws DocumentException
 	 */
 	public boolean isExist(String id) throws DocumentException {
+		//System.out.println(path);
 		org.dom4j.Document doc = getDoc();
 		// 获取指定ID的节点
 		Node bookNode = doc.selectSingleNode("//book[@id='" + id + "']");
@@ -178,6 +179,10 @@ public class BookDAO {
 		writer.write(doc);
 		writer.close();
 		return true;
+	}
+	
+	public boolean updateBook(Book book) throws DocumentException, IOException{
+		return this.updateBook(book.getId(), book.getTitle(), book.getPrice());
 	}
 
 	public boolean deleteBook(String id) throws DocumentException, IOException {
