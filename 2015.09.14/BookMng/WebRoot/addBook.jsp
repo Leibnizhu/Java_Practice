@@ -9,26 +9,28 @@
 </head>
 <body>
 	<c:url var="addBookURL" value="/addBookServ"></c:url>
-	<form action="${addBookURL}" method="post">
-		<table border="1">
-			<tr>
-				<td>ID</td>
-				<td><input name="id" type="text"/></td>
-			</tr>
-			<tr>
-				<td>标题</td>
-				<td><input name="title" type="text"/></td>
-			</tr>
-			<tr>
-				<td>价格</td>
-				<td><input name="price" type="text"/></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input value="添加" type="submit"/></td>
-			</tr>
-				
-		</table>
-	</form>
+	<div align="center">
+		<form action="${addBookURL}" method="post">
+			<table border="1">
+				<tr>
+					<td>ID</td>
+					<td><input name="id" type="text"/></td>
+				</tr>
+				<tr>
+					<td>标题</td>
+					<td><input name="title" type="text"/></td>
+				</tr>
+				<tr>
+					<td>价格</td>
+					<td><input name="price" type="text"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input value="添加" type="submit"/></td>
+				</tr>
+					
+			</table>
+		</form>
+	</div>
 </body>
 </html>

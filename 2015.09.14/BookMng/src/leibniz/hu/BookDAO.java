@@ -23,8 +23,7 @@ public class BookDAO {
 	}
 
 	/**
-	 * 无参数
-	 * 
+	 * 无参数 
 	 * @return books.xml对应的Document对象，静态函数
 	 * @throws DocumentException
 	 */
@@ -58,6 +57,10 @@ public class BookDAO {
 		return true;
 	}
 	
+	/**
+	 * 返回所有的Book
+	 * @return
+	 */
 	public List<Book> getAllBooks(){
 		try {
 			List<Book> bookList = new ArrayList<Book>();
@@ -93,6 +96,67 @@ public class BookDAO {
 		return null;
 	}
 	
+	/**
+	 * @param key 搜索的关键词
+	 * @param type 搜索的类型，可以是id---ID, title---标题, price---价格
+	 * @return 搜素结果的List
+	 */
+	public List<Book> getBooksByKey(String key, String type){
+		try {
+			List<Book> bookList = new ArrayList<Book>();
+			//Get document and its root element
+			Document doc = getDoc();
+			Element rootEle = doc.getRootElement();
+			//Get all child elements
+			List<Element> bookEles = rootEle.elements();
+			String title = "", price = "";
+			//ergodic it
+			for (Element bookEle : bookEles) {
+				//Get id
+				String id = bookEle.attributeValue("id");
+				//Get child elements
+				List<Element> childEles = bookEle.elements();
+				for (Element child : childEles) {
+					//Get title
+					if ("title".equals(child.getName())) {
+						title = child.getText();
+					}
+					//Get price
+					if ("price".equals(child.getName())) {
+						price = child.getText();
+					}
+				}
+				//Judge if fits the search condition
+				if("id".equals(type)){
+					if (id.equals(key)) {
+						Book book = new Book(id, title, price);
+						bookList.add(book);
+					}
+				} else if("title".equals(type)){
+					if (title.equals(key)) {
+						Book book = new Book(id, title, price);
+						bookList.add(book);
+					}
+				} else if("price".equals(type)){
+					if (price.equals(key)) {
+						Book book = new Book(id, title, price);
+						bookList.add(book);
+					}
+				}
+			}
+			return bookList;
+		} catch (Exception e) {
+			
+		}
+		return null;
+	}
+	
+	/**
+	 * 根据输入的ID搜索返回Book
+	 * @param id
+	 * @return
+	 * @throws DocumentException
+	 */
 	public Book getBookById(String id) throws DocumentException {
 		org.dom4j.Document doc = getDoc();
 		Node bookNode = doc.selectSingleNode("//book[@id='" + id + "']");
@@ -104,9 +168,9 @@ public class BookDAO {
 		Element bookEle = (Element) bookNode;
 		String title = "", price = "";
 		// 列出子元素并遍历
-		List childEles = bookEle.elements();
+		List<Element> childEles = bookEle.elements();
 		for (int i = 0; i < childEles.size(); i++) {
-			Element childEle = (Element) childEles.get(i);
+			Element childEle = childEles.get(i);
 			// 获取title
 			if ("title".equals(childEle.getName())) {
 				title = childEle.getText();
@@ -160,6 +224,15 @@ public class BookDAO {
 		return this.addBook(book.getId(), book.getTitle(), book.getPrice());
 	}
 
+	/**
+	 * 更新一个Book的信息
+	 * @param id
+	 * @param title
+	 * @param price
+	 * @return 是否成功更新信息，修改一个不存在的ID将会返回False
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
 	public boolean updateBook(String id, String title, String price) throws DocumentException, IOException {
 		org.dom4j.Document doc = getDoc();
 		// 获取指定ID的节点
@@ -181,10 +254,24 @@ public class BookDAO {
 		return true;
 	}
 	
+	/**
+	 * 更新一个Book的信息
+	 * @param book
+	 * @return 是否成功更新信息，修改一个不存在的ID将会返回False
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
 	public boolean updateBook(Book book) throws DocumentException, IOException{
 		return this.updateBook(book.getId(), book.getTitle(), book.getPrice());
 	}
 
+	/**
+	 * 删除一本书
+	 * @param id
+	 * @return
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
 	public boolean deleteBook(String id) throws DocumentException, IOException {
 		org.dom4j.Document doc = getDoc();
 		// 获取指定ID的节点

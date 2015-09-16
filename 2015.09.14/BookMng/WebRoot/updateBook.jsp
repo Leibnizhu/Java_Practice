@@ -9,22 +9,23 @@
 </head>
 <body>
 	<c:url value="/updateBookServ" var="upBookServ"></c:url>
-	<form action="${upBookServ}" method="post">
-		<table border="1">
-			<tr>
-				<td>标题</td>
-				<td><input type="hidden" name="id" value="${requestScope.book.id}"/>
-					<input type="text" name="title" value="${requestScope.book.title}"/></td>
-			</tr>
-			<tr>
-				<td>价格</td>
-				<td><input type="text" name="price" value="${requestScope.book.price}"/></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="修改"/></td>
-			</tr>
-		</table>
-	</form>
+	<div align="center">
+		<form action="${upBookServ}" method="post">
+			<table border="1">
+				<tr>
+					<td>标题</td>
+					<td><input type="hidden" name="id" value="${requestScope.book.id}"/>
+						<input type="text" name="title" value="${requestScope.book.title}"/></td>
+				</tr>
+				<tr>
+					<td>价格</td>
+					<td><input type="text" name="price" value="${requestScope.book.price}"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="修改"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

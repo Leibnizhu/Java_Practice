@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<c:url var="getAllBook" value="/getAllBook"></c:url>
   	<a href="${getAllBook}" target="content">所有书籍</a>
-  	<a href="" target="content">搜索书籍</a>
+  	<a href="searchBook.jsp" target="content">搜索书籍</a>
   	<a href="addBook.jsp" target="content">添加书籍</a>
   </body>
 </html>
