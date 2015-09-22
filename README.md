@@ -56,6 +56,12 @@
 包括：JavaScript练习，添加附件、全选框、邮件列表、二级城市选择、改变文字颜色及表格行交错颜色的Demo
 * [2015.08.31](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.08.31)
 包括：分别基于JAXP DOM、SAX和Dom4j的简单xml增删改查操作Demo
+* [2015.09.09](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.09.09)
+包括：基于Servlet生成校验码图片，并判断用户输入校验码是否正确
+* [2015.09.14](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.09.14)
+包括：一个简单的基于XML和JSP的图书管理系统Demo
+* [2015.09.21](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.09.21)
+包括：一个基于MySQL和JDBC的简单学生管理系统Demo
 
 ### 感想
 ---
