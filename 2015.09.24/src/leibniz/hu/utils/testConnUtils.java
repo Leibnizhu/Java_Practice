@@ -12,17 +12,17 @@ public class testConnUtils {
 
 	public static void main(String[] args){
 		
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 5000; i++){
 			new ConnThread().start();
 		}
 	}
-	
+	/*
 	@Test
 	public void testConnUtil(){
 		for(int i = 0; i < 3; i++){
 			new ConnThread().start();
 		}
-	}
+	}*/
 }
 
 class ConnThread extends Thread{
@@ -41,6 +41,7 @@ class ConnThread extends Thread{
 			e.printStackTrace();
 		} finally {
 			try {
+				conn.setAutoCommit(true);
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -49,11 +49,12 @@ public class ConnUtils {
 					public Object invoke(Object proxy,Method method,Object[] args) throws Throwable {
 						//调用close()时，回收资源到连接池，并唤醒其他/一个线程
 						if("close".equals(method.getName())){
-							System.out.println("调用close()...");
+							//System.out.println("调用close()...");
 							synchronized (connPool) {
 								connPool.add((Connection) proxy);
 								connPool.notify();//或者connPool.notifyAll();
 							}
+							return null;
 						}
 						return method.invoke(conn, args);
 					}
@@ -75,12 +76,13 @@ public class ConnUtils {
 	public static Connection getConn(){
 		synchronized (connPool) {
 			//如果连接池空，则一直等待其他线程释放连接时唤醒
-			while (connPool.size() == 0) {
+			if (connPool.size() == 0) {
 				try {
 					connPool.wait();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				return getConn();
 			}
 			//获取一个连接并返回
 			System.err.println(connPool.size() + " connection(s) left....");
