@@ -23,6 +23,8 @@ public class Login extends HttpServlet {
 		c.setMaxAge(0);
 		c.setPath(request.getContentType());
 		response.addCookie(c);
+		//在Session中加入exit属性，以便绕过Cookie遍历
+		request.getSession().setAttribute("exit", true);
 		//退出登录后重定向到index.jsp
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
