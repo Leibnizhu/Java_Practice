@@ -15,7 +15,7 @@ public class UserServlet extends DistributeServlet {
 	public void execute(HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
 		//从请求中接受参数并封装成User对象
-		String name = req.getParameter("name");
+		String name = req.getParameter("username");
 		String pswd = req.getParameter("pswd");
 		User user = new User(null, name, pswd);
 		//调用UserService的方法登录

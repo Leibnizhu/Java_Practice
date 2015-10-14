@@ -1,18 +1,14 @@
 package leibniz.hu.utils;
 
-import static org.junit.Assert.*;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import org.junit.Test;
 
 public class testConnUtils {
 
 	public static void main(String[] args){
 		
-		for(int i = 0; i < 5000; i++){
+		for(int i = 0; i < 1000; i++){
 			new ConnThread().start();
 		}
 	}

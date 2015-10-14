@@ -49,7 +49,7 @@ public class ConnUtils {
 					public Object invoke(Object proxy,Method method,Object[] args) throws Throwable {
 						//调用close()时，回收资源到连接池，并唤醒其他/一个线程
 						if("close".equals(method.getName())){
-							//System.out.println("调用close()...");
+							System.out.println("释放一个连接...");
 							synchronized (connPool) {
 								connPool.add((Connection) proxy);
 								connPool.notify();//或者connPool.notifyAll();
@@ -85,8 +85,9 @@ public class ConnUtils {
 				return getConn();
 			}
 			//获取一个连接并返回
-			System.err.println(connPool.size() + " connection(s) left....");
-			return connPool.removeFirst(); //使用链表额removeFirst()方法，效率更高
+			Connection conn = connPool.removeFirst();
+			System.err.println("取出前连接池中还剩:" + connPool.size() + "个连接...");
+			return conn;//使用链表额removeFirst()方法，效率更高
 		}
 	}
 }
