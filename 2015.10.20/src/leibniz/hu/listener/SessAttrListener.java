@@ -3,7 +3,6 @@ package leibniz.hu.listener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
@@ -23,6 +22,7 @@ public class SessAttrListener implements HttpSessionAttributeListener {
 	 * 当用户登录时，会将user放入Session中，此时应该将Session放入所维护的一个Map中，以SessionId为键
 	 * 以Map存储，是为了方便查找，提高查找效率;因为是全站共享的在线用户数据，所以这个Map要存储在context中
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void attributeAdded(HttpSessionBindingEvent se) {
 		String key = se.getName();
@@ -41,6 +41,7 @@ public class SessAttrListener implements HttpSessionAttributeListener {
 			//最后将当前Session存入该Map
 			HttpSession session = se.getSession();
 			online.put(session.getId(), session);
+			System.out.println(online);
 		}
 
 	}
@@ -49,6 +50,7 @@ public class SessAttrListener implements HttpSessionAttributeListener {
 	 * @see javax.servlet.http.HttpSessionAttributeListener#attributeRemoved(javax.servlet.http.HttpSessionBindingEvent)
 	 * 当用户退出登录，应将Session中的user属性删除，此时应该将该Map的对应键值对删除
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent se) {
 		String key = se.getName();
@@ -58,6 +60,7 @@ public class SessAttrListener implements HttpSessionAttributeListener {
 			ServletContext sc = se.getSession().getServletContext();
 			Map<String, HttpSession> online = (Map<String, HttpSession>) sc.getAttribute("online");
 			online.remove(se.getSession().getId());
+			System.out.println(online);
 		}
 	}
 

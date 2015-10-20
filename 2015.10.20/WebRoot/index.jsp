@@ -32,6 +32,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</c:otherwise>
   	</c:choose>
   	<hr/>
-    <a href="">查看在线用户</a>
+    <a href="<c:url value='/showOnline'/>">查看在线用户</a>
   </body>
 </html>
