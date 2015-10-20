@@ -8,6 +8,8 @@
 <title>当前在线用户列表</title>
 </head>
 <body>
+	共有：<c:choose><c:when test="${empty loggedCnt}">0</c:when>
+					<c:otherwise>${loggedCnt}</c:otherwise></c:choose>人登录，${connectedCnt}人在线。
 	<table border="1">
 		<tr align="center">
 			<td>Session ID</td>

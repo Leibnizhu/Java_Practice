@@ -33,6 +33,8 @@ public class KickOut extends HttpServlet {
 		//判断IP是否服务器主机，否则不让进行踢出的操作
 		if(!"0:0:0:0:0:0:0:1".equals(request.getRemoteAddr())){
 			System.out.println("权限不够，请及时充值!!!"+request.getRemoteAddr());
+			response.setContentType("text/html;charset=UTF-8");
+			response.getOutputStream().write("权限不够，请及时充值!!!".getBytes("UTF-8"));
 			return;
 		}
 		String id = request.getParameter("id");
@@ -40,6 +42,7 @@ public class KickOut extends HttpServlet {
 		HttpSession session = onlineMap.get(id);
 		//强制remove掉user属性，触发监听器删除Map中对应的键值对
 		session.removeAttribute("user");
+		session.invalidate();
 		//重定向到列表页面
 		response.sendRedirect(request.getContextPath() + "/showOnline");
 	}

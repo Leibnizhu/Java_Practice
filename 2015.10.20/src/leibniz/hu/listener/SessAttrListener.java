@@ -42,6 +42,14 @@ public class SessAttrListener implements HttpSessionAttributeListener {
 			HttpSession session = se.getSession();
 			online.put(session.getId(), session);
 			System.out.println(online);
+			
+			//记录登录人数
+			Integer logged = (Integer) sc.getAttribute("loggedCnt");
+			if( logged == null){
+				sc.setAttribute("loggedCnt", new Integer(1));
+			} else {
+				sc.setAttribute("loggedCnt", logged + 1);
+			}
 		}
 
 	}
@@ -61,6 +69,9 @@ public class SessAttrListener implements HttpSessionAttributeListener {
 			Map<String, HttpSession> online = (Map<String, HttpSession>) sc.getAttribute("online");
 			online.remove(se.getSession().getId());
 			System.out.println(online);
+			//更改已登录人数纪录
+			Integer logged = (Integer) sc.getAttribute("loggedCnt");
+			sc.setAttribute("loggedCnt", logged - 1);
 		}
 	}
 

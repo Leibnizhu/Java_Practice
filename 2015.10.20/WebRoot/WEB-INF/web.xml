@@ -38,4 +38,7 @@
     <servlet-name>KickOut</servlet-name>
     <url-pattern>/kickOut</url-pattern>
   </servlet-mapping>
+    <listener>
+        <listener-class>leibniz.hu.listener.SessListener</listener-class>
+    </listener>
 </web-app>
