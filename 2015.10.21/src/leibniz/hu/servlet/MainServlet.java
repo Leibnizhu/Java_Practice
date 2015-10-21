@@ -26,7 +26,7 @@ public class MainServlet extends BaseServlet {
 		//将查询结果添加到Request中并转发给JSP去显示
 		req.setAttribute("lsMenu", lsMenu);
 		try {
-			req.getRequestDispatcher(req.getContextPath() + "/jsp/main.jsp").forward(req, resp);
+			req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -23,9 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div align="center">
-    	<form action="<c:url value='/'/>" method="post">
+    	<form action="<c:url value='/userServlet'/>" method="post">
     		用户名：<input type="text" name="username"><br/>
-    		密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text" name="pswd"><br/>
+    		密&nbsp;码：<input type="text" name="pswd"><br/>
     		<input type="submit" value="登录">
     	</form>
     </div>

@@ -21,13 +21,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
   </head>
   
-  <body>
+  <body style="margin:0px">
     <div align="center">
-    	<form action="<c:url value='/'/>" method="post">
-    		用户名：<input type="text" name="username"><br/>
-    		密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text" name="pswd"><br/>
-    		<input type="submit" value="登录">
-    	</form>
+    	<table border="1" width="100%" height="100%">
+    		<tr height="10%">
+    			<td colspan="2" align="center">欢迎进入管理系统</td>
+    		</tr>
+    		<tr>
+    			<td width="10%" valign="top" align="center">
+	    			<c:forEach items="${lsMenu}" var="menu">
+	    				<a target="mainFrame" href="<c:url value='${menu.url }'/>">${menu.name }</a><br/>
+	    			</c:forEach>
+    			</td>
+    			<td>
+    				<iframe name="mainFrame" frameborder="0" width="100%" height="100%"></iframe>
+    			</td>
+    		</tr>
+    	</table>
     </div>
   </body>
 </html>
