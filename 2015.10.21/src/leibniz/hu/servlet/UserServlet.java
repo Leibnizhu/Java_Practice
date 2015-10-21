@@ -43,5 +43,4 @@ public class UserServlet extends BaseServlet {
 			resp.sendRedirect(req.getContextPath() + "/mainServlet");
 		}
 	}
-
 }
