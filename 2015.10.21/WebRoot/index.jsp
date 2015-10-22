@@ -23,11 +23,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div align="center">
-    	<form action="<c:url value='/userServlet'/>" method="post">
-    		用户名：<input type="text" name="username"><br/>
-    		密&nbsp;码：<input type="text" name="pswd"><br/>
-    		<input type="submit" value="登录">
-    	</form>
+    	<font color="red">
+    		<c:choose>
+    			<c:when test="${param.error == 1}">
+    				用户名或密码错误，请重新输入
+    			</c:when>
+    			<c:when test="${param.error == 2}">
+    				请先登录
+    			</c:when>
+    			<c:when test="${param.error == 3}">
+    				无访问此页面的权限
+    			</c:when>
+    		</c:choose>
+    	</font>
+    	
+    	<c:choose>
+	  		<c:when test="${empty sessionScope.user }">
+			    <form action="<c:url value='/userServlet?cmd=login'/>" method="post">
+		    		用户名：<input type="text" name="username"><br/>
+		    		密&nbsp;码：<input type="text" name="pswd"><br/>
+		    		<input type="submit" value="登录">
+	    		</form>		
+	  		</c:when>
+	  		<c:otherwise>
+	  			<jsp:forward page="/mainServlet"></jsp:forward>
+	  		</c:otherwise>
+	  	</c:choose>
     </div>
   </body>
 </html>

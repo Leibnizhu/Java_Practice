@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,13 +25,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div align="center">
     	<table border="1" width="100%" height="100%">
     		<tr height="10%">
-    			<td colspan="2" align="center">欢迎进入管理系统</td>
+    			<td colspan="2" align="center">
+    				欢迎进入管理系统<br/>
+    				<font color="red">
+			    		<c:choose>
+			    			<c:when test="${param.error == 3}">
+			    				无访问此页面的权限
+			    			</c:when>
+			    		</c:choose>
+			    	</font>
+    			</td>
     		</tr>
     		<tr>
     			<td width="10%" valign="top" align="center">
 	    			<c:forEach items="${lsMenu}" var="menu">
 	    				<a target="mainFrame" href="<c:url value='${menu.url }'/>">${menu.name }</a><br/>
 	    			</c:forEach>
+	    			<hr>
+	    			<a href="<c:url value='/userServlet?cmd=logout'/>">退出登录</a>
     			</td>
     			<td>
     				<iframe name="mainFrame" frameborder="0" width="100%" height="100%"></iframe>
