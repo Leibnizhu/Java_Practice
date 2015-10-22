@@ -22,6 +22,14 @@ public class MainServlet extends BaseServlet {
 		//从Session中读取登陆时存储的User对象，而不是从request的Parameters哦
 		User user = (User) req.getSession().getAttribute("user");
 		//使用MenuService查询该用户应该拥有的菜单List
+		if(null == user){
+			try {
+				resp.sendRedirect(req.getContextPath() + "/jsp/main.jsp?error=3");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return;
+		}
 		List<Menu> lsMenu = ms.query(user.getId());
 		//将查询结果添加到Request中并转发给JSP去显示
 		req.setAttribute("lsMenu", lsMenu);

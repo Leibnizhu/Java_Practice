@@ -9,7 +9,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * @author Leibniz
- * 数据哭相关的工具类，全部静态
+ * 数据库相关的工具类，全部静态
  */
 public class DataSourceUtil {
 	//DataSource连接池变量

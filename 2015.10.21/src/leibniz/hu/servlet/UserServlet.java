@@ -43,4 +43,13 @@ public class UserServlet extends BaseServlet {
 			resp.sendRedirect(req.getContextPath() + "/mainServlet");
 		}
 	}
+	
+	public void logout(HttpServletRequest req, HttpServletResponse resp){
+		req.getSession().removeAttribute("user");
+		try {
+			resp.sendRedirect(req.getContextPath() + "/index.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
