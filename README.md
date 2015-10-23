@@ -62,6 +62,15 @@
 包括：一个简单的基于XML和JSP的图书管理系统Demo
 * [2015.09.21](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.09.21)
 包括：一个基于MySQL和JDBC的简单学生管理系统Demo
+* [2015.09.24](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.09.24)
+包括：简单的通信录管理DEMO，利用到MySQL数据库一对多table
+* [2015.10.14](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.14)
+包括：利用过滤器和Cookie实现自动登录
+* [2015.10.20](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.20)
+包括：利用监听器监听Session，统计在线人数和登录的人数
+* [2015.10.21](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.21)
+包括：一个简单的管理系统DEMO，利用两个过滤器判断用户是否登录/有否权限访问申请的页面
+
 
 ### 感想
 ---
