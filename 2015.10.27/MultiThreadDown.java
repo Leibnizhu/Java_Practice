@@ -37,7 +37,7 @@ public class MultiThreadDown {
 					//最后一个线程直接读到最尾部
 					end = length-1;
 				}
-				new DownThread(url, "d:/" + fileName, start, end).start();
+				new DownThread(url, "d:/" + fileName, start, end, length).start();
 			}
 		}
 		conn.disconnect();
@@ -54,11 +54,14 @@ class DownThread extends Thread{
 	private String fileName;
 	private int start;
 	private int end;
-	public DownThread(URL url, String fileName, int start, int end) {
+	private int length;
+	private static Integer sum = 0;
+	public DownThread(URL url, String fileName, int start, int end, int length) {
 		this.url = url;
 		this.fileName = fileName;
 		this.start = start;
 		this.end = end;
+		this.length = length;
 	}
 	
 	@Override
@@ -79,8 +82,13 @@ class DownThread extends Thread{
 				raFile.seek(start);
 				byte[] buf = new byte[1024];
 				int len = -1;
-				while((len = in.read(buf)) != -1){
-					raFile.write(buf,0,len);
+				//System.out.println(length + ":" + sum);
+				synchronized (sum) {
+					while ((len = in.read(buf)) != -1) {
+						raFile.write(buf, 0, len);
+						sum += len;
+						System.out.println("已完成---" + sum * 100 / length + "%");
+					}
 				}
 				raFile.close();
 			}
