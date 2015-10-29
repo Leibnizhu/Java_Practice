@@ -70,6 +70,8 @@
 包括：利用监听器监听Session，统计在线人数和登录的人数
 * [2015.10.21](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.21)
 包括：一个简单的管理系统DEMO，利用两个过滤器判断用户是否登录/有否权限访问申请的页面
+* [2015.10.27](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.27)
+包括：通过邮件发送激活码进行注册的DEMO，包括注册、登录、激活三大基本功能
 
 
 ### 感想
