@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		function down(oname, nname){
 			var url = "<c:url value='/downServlet?oldname='/>" + oname + "&newname=" + nname;
-			alert(url);
+			//alert(url);
 			window.location.href=url;
 		}
 	</script>
