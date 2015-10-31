@@ -80,8 +80,7 @@ public class UpServlet extends HttpServlet {
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
-			
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	}
-
 }

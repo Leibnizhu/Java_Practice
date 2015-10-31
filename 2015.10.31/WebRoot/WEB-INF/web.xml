@@ -9,10 +9,28 @@
     <servlet-name>UpServlet</servlet-name>
     <servlet-class>leibniz.hu.servlet.UpServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ShowServlet</servlet-name>
+    <servlet-class>leibniz.hu.servlet.ShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DelServlet</servlet-name>
+    <servlet-class>leibniz.hu.servlet.DelServlet</servlet-class>
+  </servlet>
+
+
 
   <servlet-mapping>
     <servlet-name>UpServlet</servlet-name>
     <url-pattern>/upServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowServlet</servlet-name>
+    <url-pattern>/showServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelServlet</servlet-name>
+    <url-pattern>/delServlet</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
