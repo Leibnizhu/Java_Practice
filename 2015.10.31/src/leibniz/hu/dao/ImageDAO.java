@@ -14,9 +14,9 @@ public class ImageDAO {
 
 	public Image save(Image img) {
 		QueryRunner qRun = new QueryRunner(DataSourceUtil.getDataSource());
-		String sql = "insert into images(id, oldname, newname, ip, crdate, descript) values(?,?,?,?,?,?)";
+		String sql = "insert into images(id, oldname, newname, ip, crdate, descript, tnwidth, tnheight) values(?,?,?,?,?,?,?,?)";
 		try {
-			qRun.update(sql, img.getId(), img.getOldname(), img.getNewname(), img.getIp(), img.getCrdate(), img.getDescript());
+			qRun.update(sql, img.getId(), img.getOldname(), img.getNewname(), img.getIp(), img.getCrdate(), img.getDescript(), img.getTnwidth(), img.getTnheight());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

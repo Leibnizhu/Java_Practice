@@ -8,5 +8,7 @@ create table images(
 	newname varchar(128),
 	ip varchar(16),
 	crdate char(19),
-	descript varchar(128)
+	descript varchar(128),
+	tnwidth int,
+	tnheight int
 );

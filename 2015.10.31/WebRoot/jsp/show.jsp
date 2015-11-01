@@ -45,7 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<h1>所有照片</h1>
     	<c:forEach items="${images}" var="img">
     		<div align="center" class="frame">
-    			<a href="<c:url value='/up/${img.newname}'/>"><img src="<c:url value='/up/${img.newname}'/>" style="width:200px;height:200px;"/></a><br/>
+	    		<div style="width:200px;height:200px;" >
+	    			<a href="<c:url value='/up/${img.newname}'/>"><img src="<c:url value='/up/${img.newname}'/>" 
+	    				style="width:${img.tnwidth}px;height:${img.tnheight}px;"/></a>
+	   			</div><br/>
     			<c:choose>
     				<c:when test="${fn:length(img.oldname) > 15}">
     					${fn:substring(img.oldname,0,15)}...

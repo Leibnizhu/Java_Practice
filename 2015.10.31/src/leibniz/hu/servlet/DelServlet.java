@@ -42,9 +42,11 @@ public class DelServlet extends HttpServlet {
 			} else {
 				//不吻合则出错
 				System.err.println("User of IP:" + img.getIp() + "do not own the competence to delete...");
+				response.sendRedirect(request.getContextPath() +"/showServlet");
 			}
 		} else {
 			System.err.println("Image with id of " + id + " is not existed...");
+			response.sendRedirect(request.getContextPath() +"/showServlet");
 		}
 	}
 

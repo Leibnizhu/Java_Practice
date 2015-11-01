@@ -1,11 +1,14 @@
 package leibniz.hu.servlet;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -72,6 +75,22 @@ public class UpServlet extends HttpServlet {
 					//保存上传的文件
 					String path = getServletContext().getRealPath("/up");
 					file.write(new File(path +  "/" + newName));
+					BufferedImage sourceImg =ImageIO.read(new FileInputStream(new File(path +  "/" + newName)));
+					int width = sourceImg.getWidth();
+					int height = sourceImg.getHeight();
+					//计算缩略图尺寸
+					if(height > 200 || width > 200){
+						//如果超出show。jsp的画框divided、显示范围则缩小
+						if(height > width){
+							width = (200 * width) / height;
+							height = 200;
+						} else {
+							height = (200 * height) / width;
+							width = 200;
+						}
+					}
+					img.setTnheight(height);
+					img.setTnwidth(width);
 					file.delete();
 				}
 			}
