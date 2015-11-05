@@ -72,6 +72,8 @@
 包括：一个简单的管理系统DEMO，利用两个过滤器判断用户是否登录/有否权限访问申请的页面
 * [2015.10.27](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.27)
 包括：通过邮件发送激活码进行注册的DEMO，包括注册、登录、激活三大基本功能
+* [2015.10.31](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.27)
+包括：一个简单的相片管理系统，任何人均可上传，只能删除同IP上传的照片，提供下载功能
 
 
 ### 感想
