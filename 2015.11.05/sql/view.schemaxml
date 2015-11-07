@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">bookmall</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="books" view="colnames">
+<left>0</left>
+<top>0</top>
+<width>111</width>
+<height>282</height>
+<sql_create_table>CREATE TABLE `books` (
+  `id` char(32) NOT NULL,
+  `name` varchar(64) default NULL,
+  `price` decimal(7,2) default NULL,
+  `discount` decimal(3,2) default NULL,
+  `author` varchar(32) default NULL,
+  `intro` text,
+  `direcory` text,
+  `image` varchar(64) default NULL,
+  `page` int(11) default NULL,
+  `publisher` varchar(32) default NULL,
+  `publishdate` char(19) default NULL,
+  `stock` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="category" view="colnames">
+<left>337</left>
+<top>28</top>
+<width>78</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `category` (
+  `id` char(32) NOT NULL,
+  `name` varchar(32) default NULL,
+  `des` varchar(128) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="bookcategory" view="colnames">
+<left>173</left>
+<top>248</top>
+<width>106</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `bookcategory` (
+  `bookid` char(32) NOT NULL,
+  `categoryid` char(32) NOT NULL,
+  PRIMARY KEY  (`bookid`,`categoryid`),
+  KEY `bcfk2` (`categoryid`),
+  CONSTRAINT `bcfk1` FOREIGN KEY (`bookid`) REFERENCES `books` (`id`),
+  CONSTRAINT `bcfk2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
