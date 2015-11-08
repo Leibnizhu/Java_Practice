@@ -5,6 +5,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name></display-name>
+  <context-param>
+  	<param-name>jumpConfig</param-name>
+  	<param-value>/WEB-INF/jumpPages.properties</param-value>
+  </context-param>
   <servlet>
     <servlet-name>indexServlet</servlet-name>
     <servlet-class>leibniz.hu.index.indexServlet</servlet-class>
@@ -17,4 +21,7 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+    <listener>
+        <listener-class>leibniz.hu.listener.JumpPageConfigListener</listener-class>
+    </listener>
 </web-app>
