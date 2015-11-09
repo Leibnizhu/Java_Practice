@@ -13,10 +13,19 @@
     <servlet-name>indexServlet</servlet-name>
     <servlet-class>leibniz.hu.index.indexServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>BookServlet</servlet-name>
+    <servlet-class>leibniz.hu.book.BookServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>indexServlet</servlet-name>
     <url-pattern>/indexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BookServlet</servlet-name>
+    <url-pattern>/bookServlet</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

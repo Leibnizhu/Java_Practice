@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,34 +21,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<style type="text/css">
-		table {
+		*{
+  			font-size:10pt;
+  		}
+  		div {
 			border:1px solid gray;
-			border-collapse:collapse;
-			width:1024px;
-			height:120%;
+			width:160px;
+			height:220px;
+			text-align:center;
+			float: left;
+			margin:3px;
 		}
-		td{
-			border:1px solid gray;
+		img{
+			border:0px solid gray;
+			width:160px;
+			height:160px;
 		}
 	</style>
   </head>
   
   <body style="margin:0px;text-align:center;">
-  	<table>
-  		<tr style="background:aqua;">
-  			<td colspan="2" height="60" align="center"><font size=5 >网上购书中心</font></td>
-  		</tr>
-  		<tr>
-  			<td align="center" valign="top" style="width:100px">
-  				<a href="<c:url value='/bookServlet'/>" target="mainFrame">全部图书</a><br/>
-  				<c:forEach items="${cateList}" var="cate">
-  					<a href="<c:url value='/bookServlet?categoryid=${cate.id}'/>" target="mainFrame">${cate.name}</a><br/>
-  				</c:forEach>
-  			</td>
-  			<td>
-  				<iframe name="mainFrame" src="<c:url value='/bookServlet'/>" frameborder="0" width="100%" height="100%"></iframe>
-  			</td>
-  		</tr>
-  	</table>
+  	显示所有图书：<br/>
+  	<c:forEach items="${listBook}" var="book">
+  		<div>
+  			<a href="<c:url value='/bookServlet?cmd=detail&bookid=${book.id}'/>">
+  				<img src="<c:url value='/imgs/${book.image}'/>"/><br/>
+  				${book.name}
+  			</a>
+  			<br/>
+  			价格：
+  			<c:choose>
+  				<c:when test="${book.discount == 1}">
+  					${book.price} 
+  				</c:when>
+  				<c:otherwise>
+  					<font style="text-decoration: line-through;">${book.price}</font>
+  					<font style="color:red;"><fmt:formatNumber value="${book.price*book.discount}" pattern="#,###.00"/></font>
+  				</c:otherwise>
+  			</c:choose>
+  			元
+  		</div>
+  	</c:forEach>
   </body>
 </html>
