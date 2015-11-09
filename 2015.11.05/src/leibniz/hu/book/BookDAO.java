@@ -4,13 +4,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import leibniz.hu.utils.DataSourceUtil;
 
 public class BookDAO {
 
-	public List<Book> queryByCategory(String categoryId) {
+	public List<Book> queryBooksByCategory(String categoryId) {
 		QueryRunner  qRun = new QueryRunner(DataSourceUtil.getDataSource());
 		String sql = null;
 		List<Book> lBooks = null;
@@ -31,6 +32,18 @@ public class BookDAO {
 			e.printStackTrace();
 		}
 		return lBooks;
+	}
+
+	public Book queryBookById(String bookid) {
+		QueryRunner  qRun = new QueryRunner(DataSourceUtil.getDataSource());
+		String sql = "select * from books where id = ?";
+		Book book = null;
+		try {
+			book = qRun.query(sql, new BeanHandler<Book>(Book.class), bookid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return book;
 	}
 
 }

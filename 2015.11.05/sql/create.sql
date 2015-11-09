@@ -16,7 +16,7 @@ create table books(
 	discount numeric(3,2),
 	author varchar(32),
 	intro text,
-	direcory text,
+	directory text,
 	image varchar(64),
 	page int,
 	publisher varchar(32),

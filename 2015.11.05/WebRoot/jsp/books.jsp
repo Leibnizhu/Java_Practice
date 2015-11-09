@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		*{
   			font-size:10pt;
   		}
-  		div {
+  		.book {
 			border:1px solid gray;
 			width:160px;
 			height:220px;
@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			float: left;
 			margin:3px;
 		}
-		img{
+		.img{
 			border:0px solid gray;
 			width:160px;
 			height:160px;
@@ -40,27 +40,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
   </head>
   
-  <body style="margin:0px;text-align:center;">
-  	显示所有图书：<br/>
-  	<c:forEach items="${listBook}" var="book">
-  		<div>
-  			<a href="<c:url value='/bookServlet?cmd=detail&bookid=${book.id}'/>">
-  				<img src="<c:url value='/imgs/${book.image}'/>"/><br/>
-  				${book.name}
-  			</a>
-  			<br/>
-  			价格：
-  			<c:choose>
-  				<c:when test="${book.discount == 1}">
-  					${book.price} 
-  				</c:when>
-  				<c:otherwise>
-  					<font style="text-decoration: line-through;">${book.price}</font>
-  					<font style="color:red;"><fmt:formatNumber value="${book.price*book.discount}" pattern="#,###.00"/></font>
-  				</c:otherwise>
-  			</c:choose>
-  			元
-  		</div>
-  	</c:forEach>
+  <body>
+	<div style="background:#FFFFFF;margin:0 auto;width:900px;text-align:center">
+	  	显示所有图书：<br/>
+	  	<c:forEach items="${listBook}" var="book">
+	  		<div class="book">
+	  			<a href="<c:url value='/bookServlet?cmd=detail&bookid=${book.id}'/>">
+	  				<img class="img" src="<c:url value='/imgs/${book.image}'/>"/><br/>
+	  				${book.name}
+	  			</a>
+	  			<br/>
+	  			价格：
+	  			<c:choose>
+	  				<c:when test="${book.discount == 1}">
+	  					${book.price} 
+	  				</c:when>
+	  				<c:otherwise>
+	  					<font style="text-decoration: line-through;">${book.price}</font>
+	  					<font style="color:red;"><fmt:formatNumber value="${book.price*book.discount}" pattern="#,###.00"/></font>
+	  				</c:otherwise>
+	  			</c:choose>
+	  			元
+	  		</div>
+	  	</c:forEach>
+	 </div>
   </body>
 </html>

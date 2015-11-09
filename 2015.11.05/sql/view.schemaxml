@@ -27,8 +27,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="category" view="colnames">
-<left>337</left>
-<top>28</top>
+<left>308</left>
+<top>23</top>
 <width>78</width>
 <height>129</height>
 <sql_create_table>CREATE TABLE `category` (
@@ -39,8 +39,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="bookcategory" view="colnames">
-<left>173</left>
-<top>248</top>
+<left>155</left>
+<top>106</top>
 <width>106</width>
 <height>112</height>
 <sql_create_table>CREATE TABLE `bookcategory` (

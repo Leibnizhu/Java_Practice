@@ -5,8 +5,12 @@ import java.util.List;
 public class BookService {
 	private BookDAO bookDao = new BookDAO();
 
-	public List<Book> queryByCategory(String categoryId) {
-		return bookDao.queryByCategory(categoryId);
+	public List<Book> queryBooksByCategory(String categoryId) {
+		return bookDao.queryBooksByCategory(categoryId);
+	}
+
+	public Book queryBookById(String bookid) {
+		return bookDao.queryBookById(bookid);
 	}
 	
 }

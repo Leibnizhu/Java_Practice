@@ -32,22 +32,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
   </head>
   
-  <body style="margin:0px;text-align:center;">
-  	<table>
-  		<tr style="background:aqua;">
-  			<td colspan="2" height="60" align="center"><font size=5 >网上购书中心</font></td>
-  		</tr>
-  		<tr>
-  			<td align="center" valign="top" style="width:100px">
-  				<a href="<c:url value='/bookServlet'/>" target="mainFrame">全部图书</a><br/>
-  				<c:forEach items="${cateList}" var="cate">
-  					<a href="<c:url value='/bookServlet?categoryid=${cate.id}'/>" target="mainFrame">${cate.name}</a><br/>
-  				</c:forEach>
-  			</td>
-  			<td>
-  				<iframe name="mainFrame" src="<c:url value='/bookServlet'/>" frameborder="0" width="100%" height="100%"></iframe>
-  			</td>
-  		</tr>
-  	</table>
+  <body>
+  	<div style="background:#F8F8F8;margin:0 auto;width:1024px;">
+	  	<table>
+	  		<tr style="background:aqua;">
+	  			<td colspan="2" height="60" align="center"><font size=5 >网上购书中心</font></td>
+	  		</tr>
+	  		<tr>
+	  			<td align="center" valign="top" style="width:100px">
+	  				<a href="<c:url value='/bookServlet'/>" target="mainFrame">全部图书</a><br/>
+	  				<c:forEach items="${cateList}" var="cate">
+	  					<a href="<c:url value='/bookServlet?categoryid=${cate.id}'/>" target="mainFrame">${cate.name}</a><br/>
+	  				</c:forEach>
+	  			</td>
+	  			<td>
+	  				<iframe name="mainFrame" src="<c:url value='/bookServlet'/>" frameborder="0" width="100%" height="100%"></iframe>
+	  			</td>
+	  		</tr>
+	  	</table>
+	 </div>
   </body>
 </html>

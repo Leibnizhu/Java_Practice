@@ -19,9 +19,15 @@ public class BookServlet extends BaseServlet {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		String categoryId = req.getParameter("categoryid");
-		List<Book> lBook = bookServ.queryByCategory(categoryId);
+		List<Book> lBook = bookServ.queryBooksByCategory(categoryId);
 		req.setAttribute("listBook", lBook);
 		return "books";
 	}
 
+	public String detail(HttpServletRequest req, HttpServletResponse resp) {
+		String bookid = req.getParameter("bookid");
+		Book book = bookServ.queryBookById(bookid);
+		req.setAttribute("bookDetail", book);
+		return "detail";
+	}
 }
