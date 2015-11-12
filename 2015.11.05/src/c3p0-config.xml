@@ -21,10 +21,10 @@
 		<property name="acquireIncrement">3</property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="jdbcUrl">
-			<![CDATA[jdbc:mysql://127.0.0.1:3306/db909?useUnicode=true&characterEncoding=UTF-8]]>
+			<![CDATA[jdbc:mysql://127.0.0.1:3306/album?useUnicode=true&characterEncoding=UTF-8]]>
 		</property>
 		<property name="user">root</property>
-		<property name="password">1234</property>
+		<property name="password">root</property>
 	</default-config> 
 	<!-- 自定义/命名配置 -->
 	<named-config name="leibniz">

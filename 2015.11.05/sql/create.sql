@@ -33,4 +33,13 @@ create table bookcategory(
 	constraint bcfk2 foreign key(categoryid) references category(id)
 );
 
+//用户信息表
+create table users(
+	id char(32) primary key,
+	name varchar(32),
+	pswd char(32),
+	email varchar(64)
+);
 
+
+//订单信息表

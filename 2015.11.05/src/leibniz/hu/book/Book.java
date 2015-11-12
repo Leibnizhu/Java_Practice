@@ -13,7 +13,18 @@ public class Book {
 	private String publisher;
 	private String publishdate;
 	private int stock;
-		
+	
+	//非数据库中的字段
+	private int cartCnt;
+	
+	public int getCartCnt() {
+		return cartCnt;
+	}
+
+	public void setCartCnt(int cartCnt) {
+		this.cartCnt = cartCnt;
+	}
+
 	public Book() {
 	}
 

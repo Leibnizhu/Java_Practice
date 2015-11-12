@@ -17,7 +17,7 @@
   `discount` decimal(3,2) default NULL,
   `author` varchar(32) default NULL,
   `intro` text,
-  `direcory` text,
+  `directory` text,
   `image` varchar(64) default NULL,
   `page` int(11) default NULL,
   `publisher` varchar(32) default NULL,
@@ -50,6 +50,19 @@
   KEY `bcfk2` (`categoryid`),
   CONSTRAINT `bcfk1` FOREIGN KEY (`bookid`) REFERENCES `books` (`id`),
   CONSTRAINT `bcfk2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="users" view="colnames">
+<left>492</left>
+<top>102</top>
+<width>78</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `users` (
+  `id` char(32) NOT NULL,
+  `name` varchar(32) default NULL,
+  `pswd` char(32) default NULL,
+  `email` varchar(64) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 </tables>
