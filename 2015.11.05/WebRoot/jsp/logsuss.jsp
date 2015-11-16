@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->	
   </head>
   
-  <body style="text-align:center;margin-top:0px;padding:10%;">
+  <body>
 	<script type="text/javascript">
    		parent.window.location.href="<c:url value='/indexServlet'/>";
    	</script>

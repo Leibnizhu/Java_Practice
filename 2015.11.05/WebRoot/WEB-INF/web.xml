@@ -29,6 +29,11 @@
     <servlet-name>GetCheckCode</servlet-name>
     <servlet-class>leibniz.hu.user.GetCheckCode</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>leibniz.hu.order.OrderServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -53,6 +58,10 @@
   <servlet-mapping>
     <servlet-name>GetCheckCode</servlet-name>
     <url-pattern>/getCheckCode</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/secury/orderServlet</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

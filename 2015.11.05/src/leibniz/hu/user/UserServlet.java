@@ -1,7 +1,5 @@
 package leibniz.hu.user;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +12,10 @@ public class UserServlet extends BaseServlet {
 	private static final long serialVersionUID = -3493735855938437156L;
 	private UserService userServ = new UserService();
 	
+	/* (non-Javadoc)
+	 * @see leibniz.hu.utils.BaseServlet#execute(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 * 用于用户注册
+	 */
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		//Get user input check code
@@ -66,7 +68,7 @@ public class UserServlet extends BaseServlet {
 	 * 用于用户登录
 	 */
 	public String login(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		Map map = req.getParameterMap();
+		//Map map = req.getParameterMap();
 		//BeanUtils.populate(user, map);
 		String pswd = CommonUtil.getMD5(req.getParameter("name") + req.getParameter("pswd"));
 		User user = new User(null, req.getParameter("name"), pswd, null);

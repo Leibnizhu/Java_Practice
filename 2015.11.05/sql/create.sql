@@ -43,3 +43,34 @@ create table users(
 
 
 //订单信息表
+create table orders(
+	id char(16) primary key,
+	addr varchar(64),
+	total numeric(7,2),
+	status INT,
+	uid char(32),
+	crtime char(10),
+	constraint odfk foreign key(uid) references users(id)
+);
+
+//订单详情表
+create table orderdetail(
+	id char(32) primary key,
+	bookid char(32),
+	counts INT,
+	price INT,
+	orderid char(16),
+	constraint bidfk foreign key(bookid) references books(id),
+	constraint oidfk foreign key(orderid) references orders(id)
+);
+
+//收货地址表
+create table address(
+	id char(32) primary key,
+	name varchar(16),
+	addr varchar(64),
+	phone varchar(16),
+	uid char(32),
+	isdef char(1),
+	constraint uidfk foreign key(uid) references users(id)
+);

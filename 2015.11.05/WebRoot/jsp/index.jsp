@@ -45,9 +45,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  						<a target="mainFrame" href="<c:url value='/jsp/register.jsp'/>" >注册</a>
 		  					</c:when>
 			  				<c:otherwise>
-			  					欢迎你，<a href="#">${user.name}</a>|
-			  					<a href="#">订单</a>|
-		  						<a target="dataFrame" href="<c:url value='/jsp/buy/car.jsp'/>">购物车</a>|
+			  					欢迎你，<a href="">${user.name}</a>|
+			  					<a href="">订单</a>|
+		  						<a target="mainFrame" href="<c:url value='/secury/cart.jsp'/>">购物车</a>|
 		  						<a href="<c:url value='/userServlet?cmd=logout'/>">退出</a>
 			  				</c:otherwise>
 		  				</c:choose>

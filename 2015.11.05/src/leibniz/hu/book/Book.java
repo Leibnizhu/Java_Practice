@@ -15,14 +15,14 @@ public class Book {
 	private int stock;
 	
 	//非数据库中的字段
-	private int cartCnt;
+	private int cartcnt;
 	
-	public int getCartCnt() {
-		return cartCnt;
+	public int getCartcnt() {
+		return cartcnt;
 	}
 
-	public void setCartCnt(int cartCnt) {
-		this.cartCnt = cartCnt;
+	public void setCartcnt(int cartcnt) {
+		this.cartcnt = cartcnt;
 	}
 
 	public Book() {
