@@ -27,8 +27,11 @@ public class OrderServlet extends BaseServlet {
 		User user = (User) req.getSession().getAttribute("user");
 		List<Address> addrList = addrServ.queryByUserid(user.getId());
 		//放入request中，并转发到对应的订单确认页面
-		req.setAttribute("addrist", addrList)
-;		return "order";
+		req.setAttribute("addrlist", addrList);
+		return "order";
 	}
 
+	public String create(HttpServletRequest req, HttpServletResponse resp){
+		return null;
+	}
 }

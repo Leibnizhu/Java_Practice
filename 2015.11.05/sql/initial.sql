@@ -29,3 +29,8 @@ insert into bookcategory values('B008','C001');
 insert into bookcategory values('B008','C004');
 insert into bookcategory values('B009','C004');
 insert into bookcategory values('B010','C004');
+
+//增加几条地址信息
+insert into address values('A001','Leibniz','广东深圳南山区', '13633333333', 'b011d79c6cf34c83b6a3191b081a1291', '1');
+insert into address values('A002','Jucy','Canada', '13782357324', 'b011d79c6cf34c83b6a3191b081a1291', '0');
+insert into address values('A003','着裤','England', '18346235676', 'b011d79c6cf34c83b6a3191b081a1291', '0');
