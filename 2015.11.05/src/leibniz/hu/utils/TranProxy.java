@@ -33,12 +33,12 @@ public class TranProxy implements InvocationHandler {
 		Object returnVal = null;
 		try{
 			//从工具类中获取一个用于事务的连接（保证线程唯一）
-			conn = DataSourceUtil.getConnNonTrans();
+			conn = DataSourceUtil.getConnTrans();
 			conn.setAutoCommit(false);
 			//调用原来的方法执行
 			returnVal = method.invoke(source, args);
 			//提交
-			System.out.println(">>>调用成功，提交事务");
+			System.out.println(">>>调用成功，提交事务" + conn);
 			conn.commit();
 		} catch(Exception e){
 			//出现异常，则回滚

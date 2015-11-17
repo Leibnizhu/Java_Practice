@@ -58,7 +58,7 @@ create table orderdetail(
 	id char(32) primary key,
 	bookid char(32),
 	counts INT,
-	price INT,
+	price numeric(7,2),
 	orderid char(16),
 	constraint bidfk foreign key(bookid) references books(id),
 	constraint oidfk foreign key(orderid) references orders(id)

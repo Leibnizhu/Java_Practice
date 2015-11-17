@@ -7,5 +7,8 @@ public class AddrService {
 	public List<Address> queryByUserid(String id) {
 		return addrDao.queryByUserid(id);
 	}
+	public Address queryByAddrid(String addrid) {
+		return addrDao.queryByAddrid(addrid);
+	}
 
 }
