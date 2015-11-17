@@ -56,6 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<c:choose>
 							<c:when test="${addr.isdef == 1}">
 								<input type="radio" onclick="check(this);" value="${addr.id}" name="id" checked="checked">
+								<script type="text/javascript">
+  									document.getElementById("addr").value = '${addr.id}';
+  								</script>
 							</c:when>
 							<c:otherwise>
 								<input type="radio" onclick="check(this);" value="${addr.id}" name="id">
@@ -119,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<td colspan="4" align="right">
 					<form name="sub" action="<c:url value='/secury/orderServlet?cmd=create'/>" method="post">
-						<input id="addr" type="hidden" name="addr">
+						<input id="addr" type="hidden" name="addrid">
 						<img src="<c:url value='/imgs/order.png'/>" onclick="create();">
 					</form>
 				</td>
