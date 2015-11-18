@@ -41,10 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:forEach items="${orderlist}" var="order">
 			<table>
 				<tr>
-					<td colspan="4" style="text-align:left;">订单编号：${order.id}</td>
+					<td colspan="5" style="text-align:left;">订单编号：${order.id}</td>
 				</tr>
 				<tr>
-					<td style="text-align:left;">创建日期：</td><td>${order.crtime}</td>
+					<td style="text-align:left;">创建日期：</td><td colspan="2">${order.crtime}</td>
 					<td style="text-align:left;">状态：</td><td>
 						<c:choose>
 							<c:when test="${order.status == 0  }">新建订单</c:when>
@@ -56,13 +56,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td style="text-align:left;">送货地址：</td>
-					<td colspan="3" style="text-align:left;">${order.addr}</td>
+					<td colspan="4" style="text-align:left;">${order.addr}</td>
 				</tr>
 				<tr>
-					<td colspan="4">订单明细</td>
+					<td colspan="5">订单明细</td>
 				</tr>
 				<tr>
-					<td>书名</td>
+					<td colspan="2">书名</td>
 					<td>单价(元)</td>
 					<td>数量</td>
 					<td>小计(元)</td>
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:set value="0" var="sum"/>
 				<c:forEach items="${order.details}" var="detail">
 					<tr>
-						<td>${detail.bookname}</td>
+						<td colspan="2">${detail.bookname}</td>
 						<td>${detail.price}</td>
 						<td>${detail.counts}</td>
 						<td>${detail.price * detail.counts}</td>
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="3" style="text-align:left;">&nbsp;总&nbsp;计：</td>
+					<td colspan="4" style="text-align:left;">&nbsp;总&nbsp;计：</td>
 					<td>${sum}</td>
 				</tr>
 			</table>
