@@ -57,6 +57,7 @@ create table orders(
 create table orderdetail(
 	id char(32) primary key,
 	bookid char(32),
+	bookname varchar(32),
 	counts INT,
 	price numeric(7,2),
 	orderid char(16),

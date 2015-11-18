@@ -9,7 +9,7 @@ public class Order {
 	private double total;
 	private String status;
 	private String uid;
-	private String ctime;
+	private String crtime;
 	
 	//数据库中没有的字段
 	//用于保存当前订单所有对应的订单明细
@@ -26,7 +26,7 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", addr=" + addr + ", total=" + total
-				+ ", uid=" + uid + ", ctime=" + ctime + ", details=" + details
+				+ ", uid=" + uid + ", crtime=" + crtime + ", details=" + details
 				+ "]";
 	}
 
@@ -73,11 +73,11 @@ public class Order {
 		this.uid = uid;
 	}
 
-	public String getCtime() {
-		return ctime;
+	public String getCrtime() {
+		return crtime;
 	}
 
-	public void setCtime(String ctime) {
-		this.ctime = ctime;
+	public void setCrtime(String crtime) {
+		this.crtime = crtime;
 	}
 }

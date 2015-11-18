@@ -39,6 +39,12 @@ public class OrderServlet extends BaseServlet {
 		return "order";
 	}
 
+	/**
+	 * @param req
+	 * @param resp
+	 * @return
+	 * 创建新订单，及对应的订单明细
+	 */
 	public String create(HttpServletRequest req, HttpServletResponse resp){
 		//从请求和Session中读取到订单地址的id号，以及当前用户的user对象
 		String addrid = req.getParameter("addrid");
@@ -56,7 +62,7 @@ public class OrderServlet extends BaseServlet {
 		Order order =  new Order();
 		//配置order对象
 		order.setAddr(newAddr);
-		order.setCtime(CommonUtil.getDateTime());
+		order.setCrtime(CommonUtil.getDateTime());
 		order.setId(CommonUtil.getOrderId());
 		order.setUid(user.getId());
 		double sumprice = 0;
@@ -64,6 +70,7 @@ public class OrderServlet extends BaseServlet {
 			Orderdetail orde = new Orderdetail();
 			orde.setId(CommonUtil.getUUIDString());
 			orde.setBookid(b.getId());
+			orde.setBookname(b.getName());
 			orde.setOrderid(order.getId());
 			orde.setCounts(b.getCartcnt()); //购物车中当前书本的数量，与数据库中的无关
 			//四舍五入计算折扣后的书本价格
@@ -84,5 +91,14 @@ public class OrderServlet extends BaseServlet {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public String list(HttpServletRequest req, HttpServletResponse resp){
+		//通过Service层从数据库中读取当前用户的所有订单
+		//放入request中并转发给jsp页面进行处理
+		User user = (User) req.getSession().getAttribute("user");
+		List<Order> orlist = orderServ.list(user);
+		req.setAttribute("orderlist", orlist);
+		return "orderlist";
 	}
 }

@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  					</c:when>
 			  				<c:otherwise>
 			  					欢迎你，<a href="">${user.name}</a>|
-			  					<a href="">订单</a>|
+			  					<a target="mainFrame" href="<c:url value='/secury/orderServlet?cmd=list'/>">订单</a>|
 		  						<a target="mainFrame" href="<c:url value='/secury/cart.jsp'/>">购物车</a>|
 		  						<a href="<c:url value='/userServlet?cmd=logout'/>">退出</a>
 			  				</c:otherwise>

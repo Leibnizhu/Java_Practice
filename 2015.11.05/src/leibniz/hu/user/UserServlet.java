@@ -85,9 +85,11 @@ public class UserServlet extends BaseServlet {
 		} else {
 			//登录成功，将user放入session中
 			req.getSession().setAttribute("user", rUser);
-			if(null != req.getSession().getAttribute("bookid")){
+			String bookid = (String) req.getSession().getAttribute("bookid");
+			if(null != bookid){
 				//如果Session中有bookid属性，说明是从书籍详情页面进来的，应该返回到书籍详情页面
-				req.getRequestDispatcher("/bookServlet?cmd=detail&bookid=" + req.getSession().getAttribute("bookid")).forward(req, resp);
+				req.getSession().removeAttribute("bookid");
+				req.getRequestDispatcher("/bookServlet?cmd=detail&bookid=" + bookid).forward(req, resp);
 				return null;
 			}
 			//并跳转到成功页面	

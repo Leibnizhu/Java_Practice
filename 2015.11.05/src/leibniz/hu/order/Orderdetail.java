@@ -6,7 +6,8 @@ public class Orderdetail {
 	private int counts;
 	private double price;
 	private String orderid;
-	
+	private String bookname;
+
 	public Orderdetail() {
 	}
 	
@@ -18,6 +19,13 @@ public class Orderdetail {
 		this.counts = counts;
 		this.price = price;
 		this.orderid = orderid;
+	}
+	
+	public String getBookname() {
+		return bookname;
+	}
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
 	}
 
 	public String getId() {
