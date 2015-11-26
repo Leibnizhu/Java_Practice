@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>insertBefore.html</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  </head>
+  <body>
+       <ul>
+	   	 <li id="bj" name="beijing">北京</li>
+		 <li id="sh" name="shanghai">上海</li>
+		 <li id="cq" name="chongqing">重庆</li>
+	   </ul>
+  </body>
+  
+  <script language="JavaScript">
+  	// 插入新的节点 <li id="tj" name="tianjin">天津</li>
+	// 在  <li id="sh" name="shanghai">上海</li>的后面
+	
+	//1 创建 <li id="tj" name="tianjin">天津</li>
+	var tjElement = document.createElement("li");
+	tjElement.setAttribute("id","tj");
+	tjElement.setAttribute("name","tianjin");
+	var textElement = document.createTextNode("天津");
+	tjElement.appendChild(textElement);
+	//2 获取上海节点
+	var shElement = document.getElementById("sh");
+	//3 获取上海节点的下一个兄弟节点 <li id="cq" name="chongqing">重庆</li>
+	var cqElement = shElement.nextSibling;
+	//4 获取上海节点的父节点
+	var parentElement = shElement.parentNode;
+	//5 添加到上海节点的下一个兄弟节点 <li id="cq" name="chongqing">重庆</li>的前面
+	parentElement.insertBefore(tjElement,cqElement);
+  </script>
+</html>
