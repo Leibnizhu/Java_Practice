@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>添加用户</title>
+	</head>
+	<body>
+		<center>
+			<br><br>
+			添加用户:<br><br>
+			姓名: <input type="text" name="name" id="name" />&nbsp;&nbsp;
+			email: <input type="text" name="email" id="email" />&nbsp;&nbsp;
+			电话: <input type="text" name="tel" id="tel" /><br><br>
+			<button id="addUser">提交</button>
+			<br><br>
+			<hr>
+			<br><br>
+			<table id="usertable" border="1" cellpadding="5" cellspacing=0>
+				<tbody>
+					<tr>
+						<th>姓名</th>
+						<th>email</th>
+						<th>电话</th>
+						<th>&nbsp;</th>
+					</tr>
+					<tr>
+						<td>Tom</td>
+						<td>tom@tom.com</td>
+						<td>5000</td>
+						<td><a href="deleteEmp?id=Tom">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Jerry</td>
+						<td>jerry@sohu.com</td>
+						<td>8000</td>
+						<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</body>
+	<script language="JavaScript">
+		document.getElementById("addUser").onclick = function(){
+			var nameVal = document.getElementById("name").value;
+			var emailVal = document.getElementById("email").value;
+			var telVal = document.getElementById("tel").value;
+			//alert(nameVal+emailVal+telVal);
+			
+			//增加单元格
+			var tdName = document.createElement("td");
+			tdName.appendChild(document.createTextNode(nameVal));
+			
+			var tdEmail = document.createElement("td");
+			tdEmail.appendChild(document.createTextNode(emailVal));
+			
+			var tdTel = document.createElement("td");
+			tdTel.appendChild(document.createTextNode(telVal));
+			
+			var tdDel = document.createElement("td");
+			var aEle = document.createElement("a");
+			aEle.setAttribute("href","#");
+			aEle.appendChild(document.createTextNode("Delete"));
+			tdDel.appendChild(aEle);
+			//tdDel.innerHTML="<a href='' >Delete</a>";
+			
+			var trEle = document.createElement("tr");
+			trEle.appendChild(tdName);
+			trEle.appendChild(tdEmail);
+			trEle.appendChild(tdTel);
+			trEle.appendChild(tdDel);
+			
+			//增加tbody增加行，并增加到table中
+			var tbodyEle = document.createElement("tbody");
+			tbodyEle.appendChild(trEle);
+			var tableEle = document.getElementById("usertable");
+			tableEle.appendChild(tbodyEle);
+			
+			aEle.onclick = function(){
+				var nameVal = this.parentNode.firstChild.firstChild.value;
+				var flag = window.confirm("Are you sure to delete user: " + nameVal +"?");
+				if(flag){
+					trEle = this.parentNode.parentNode;
+					trEle.parentNode.removeChild(trEle);
+					return false;
+				} else {
+					return false;
+				}
+			}
+		}
+	
+ 	</script>
+</html>
