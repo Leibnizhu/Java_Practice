@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>test01.html</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <select id="province" name="province">
+            <option value="">请选择....</option>
+            <option value="吉林省">吉林省</option>
+            <option value="辽宁省">辽宁省</option>
+            <option value="山东省">山东省</option>
+        </select>
+        <select id="city" name="city">
+            <option value="">请选择.....</option>
+        </select>
+    </body>
+    <script language="JavaScript">
+    	document.getElementById("province").onchange = function(){
+			var xmlEle = parseXML("cities.xml");
+			var provVal = this.value; //当前选中省份
+			var cityEle = document.getElementById("city");
+			
+			var xmlProvEles = xmlEle.getElementsByTagName("province");
+			
+			//先清空原有城市
+			var cityOptEles = cityEle.getElementsByTagName("option");
+			for(; 1<cityOptEles.length;){
+				cityEle.removeChild(cityOptEles[1]);
+			}
+			
+			//遍历xml找到选中的省份
+			for(var i=0; i<xmlProvEles.length; i++){
+				if(provVal == xmlProvEles[i].getAttribute("name")){
+					var xmlCityEles = xmlProvEles[i].getElementsByTagName("city");
+					for(var j=0; j<xmlCityEles.length; j++){
+						var cityName = xmlCityEles[j].firstChild.nodeValue;
+						var cityOptEle = document.createElement("option");
+						cityOptEle.setAttribute("value", cityName);
+						cityOptEle.appendChild(document.createTextNode(cityName));
+						cityEle.appendChild(cityOptEle);
+					}
+				}
+			}
+		}
+		
+		function parseXML(fileXmlName){
+            var xmlDoc;			
+			try {//Internet Explorer  创建一个空的xml文档
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+			} 
+			catch (e) {
+				try {//Firefox, Mozilla, Opera, 创建一个空的xml文档
+					xmlDoc = document.implementation.createDocument("", "", null);
+				} 
+				catch (e) {
+				}
+			}
+			//关闭异步加载
+			xmlDoc.async = false;
+			//加载xml文件
+			xmlDoc.load(fileXmlName);
+			return xmlDoc;
+		}
+    
+    </script>
+</html>

@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>demo</title>
+    </head>
+<body>
+    <p>员工信息录入</p>
+    <form name="empForm" id="empForm" method="post" action="user.html">
+		<table border=1>
+			<tr>
+				<td>真实姓名(不能为空 ,没有其他要求)</td>
+				<td><input type="text" id="realname" name="realname" />
+				</td>
+			</tr>
+			<tr>
+				<td>登录名(登录名不能为空,长度应该在5-8之间,可以包含中文字符(一个汉字算一个字符)):</td>
+				<td><input type="text" id="username" name="username" /></td>
+			</tr>
+			 <tr> 
+		      <td>密码(不能为空,长度6-12字符或数字,不能包含中文字符):</td>
+		      <td><input type="password" id="psw"  name="psw" style="width:120px" /></td>
+		    </tr>
+		    <tr> 
+		      <td>重复密码密码(不能为空,长度6-12字符或数字,不能包含中文字符):</td>
+		      <td><input type="password" id="psw2" name="psw2" style="width:120px" /></td>
+		    </tr>
+		    <tr>
+				<td>性别(必选其一)</td>
+				<td>
+				    <input  type="radio" id="gender_male" value="m" name="gender"/>男
+				    <input  type="radio" id="gender_female" value="f" name="gender"/>女
+				</td>
+			</tr>
+			<tr> 
+               <td>身份证(15或18为)</td>
+               <td><input type="text" id="cart"  name="cart" size=20 value="" /></td>
+            </tr>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="button"  name="ok"  id="ok"  value="保存" ></td>
+			</tr>
+		</table>
+</form>
+</body>
+<script language="JavaScript">
+	document.getElementById("ok").onclick = function(){
+		var realnameVal = document.getElementById("realname").value;
+		if(realnameVal == null || realnameVal == ''){
+			alert("真实姓名不能为空");
+			return false;
+		}
+		
+		var usernameLength = document.getElementById("username").value.length;
+		if( usernameLength<5 || usernameLength>8){
+			alert("用户名长度应该在5-8之间");
+			return false;
+		}
+		
+		var pattern = /^[a-zA-Z0-9]{6,12}$/;
+		var pswdVal = document.getElementById("psw").value;
+		if(!pattern.test(pswdVal)){
+			alert("不能为空,长度6-12字符或数字");
+			return false;
+		}
+		
+		var pswd2Val = document.getElementById("psw2").value;
+		if(pswd2Val != pswdVal){
+			alert("两次输入密码不一致请重新输入");
+			return false;
+		}
+		
+		var rMale = document.getElementById("gender_male").getAttribute("selected");
+		var rFemale = document.getElementById("gender_female").getAttribute("selected");
+		alert(rMale + " " + rFemale);
+		if(rMale == null && rFemale == null){
+			alert("必须选择性别");
+			return false;
+		}
+		focument.forms[0].submit();
+	}
+
+</script>
+</html>
