@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>test01.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+	<script language="JavaScript" src="../js/jquery-1.4.2.js"></script>
+  </head>
+  <body>
+     <select id="province" name="province">
+       <option value="">请选择....</option>
+     </select>
+	 <select id="city" name="city">
+	 	<option value="">请选择.....</option>
+		<option value="铁岭">铁岭</option>
+	 </select>
+  </body> 
+	<script language="JavaScript">
+		$.get("cities.xml",function(xml){
+			//从xml中查找province节点
+			$xmlProvEles = $(xml).find("province");
+//			alert($xmlProvEles.length);
+			//遍历之,添加到第一个下拉框
+			$xmlProvEles.each(function(index, domEle){
+				//从xml中获取province名字
+				var xmlProvVal = $(domEle).attr("name");
+				//创建一个option节点
+				var $optProv = $("<option></option>");
+				$optProv.attr("value", xmlProvVal);
+				$optProv.text(xmlProvVal);
+				//添加到省份下拉框
+				$("#province").append($optProv);
+			});
+			
+			//增加第一个下拉框的change事件，用于改变城市下拉框
+			$("#province").change(function(){
+				//先获取当前下拉框选中的值
+				var pageProvVal = $(this).val();
+//				alert(pageProvVal);
+				//清空城市下拉框的数据，除了第一个“请选择” value=""
+				$("#city option[value!='']").remove();
+				//遍历之,添加到第二个下拉框
+				$xmlProvEles.each(function(index, domEle){
+					//先找到xml里对应的省份
+					//从xml中获取province名字
+					var xmlProvVal = $(domEle).attr("name");
+					if(xmlProvVal == pageProvVal){
+						//读取当前province节点下的所有city
+						var $xmlCityEles = $(domEle).find("city");
+						//遍历之，加入到city下拉框
+						$xmlCityEles.each(function(index, domEle){
+							//从xml中获取每个城市的名字
+							var xmlCityVal = $(domEle).text();
+							//创建城市对应的option节点
+							var $optCity = $("<option></option>");
+							$optCity.attr("value", xmlCityVal);
+							$optCity.text(xmlCityVal);
+							//将option添加到城市下拉框
+							$("#city").append($optCity);
+						});
+					}
+				});
+			});
+		});
+	
+	</script>
+</html>

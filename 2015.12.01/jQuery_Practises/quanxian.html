@@ -1,0 +1,173 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>选择菜单</title>
+<link href="style_cn.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.4.2.js" type="text/javascript"></script>
+
+<style type="text/css">
+<!--
+fieldset div {
+	float:left;
+	width:24%;
+	text-align:left;
+	line-height:25px;
+}
+td div {
+	float:left;
+	width:24%;
+	text-align:left;
+	line-height:25px;
+}
+-->
+</style>
+<script language="javascript">
+	function goSelect(id){
+		var idSplit = id.split("_");
+//		alert(idSplit[0]+" "+idSplit[1]);
+		if(idSplit[0] == idSplit[1]){
+			//_前后相相同，说明是主/boss选择框
+			//下面的其他同开头的也要选上
+//	          <legend><input type='checkbox' class='checkbox' name='menuModule' value='company,company' 
+//	                   id='company_company' onClick='goSelect(this.id)' 
+//		                title="客户管理"  >客户管理
+//			alert($("#"+id).attr("checked"));
+			//查找以idSplit[0]开头但不以idSplit[0]结尾的input button
+			var $selEles = $("input[id^="+idSplit[0]+"]:not([id$="+idSplit[0]+"])")
+			if($("#"+id).attr("checked")){
+				$selEles.attr("checked", "checked");
+			} else {
+				$selEles.attr("checked", null);
+			}
+		} else {
+			//普通的选择框，
+			//判断如果其余同层的没有被选中的话，boss选择框要取消，否则boss要选中
+			var $selEles = $("input[id^="+idSplit[0]+"]:not([id$="+idSplit[0]+"]):checked");
+			//获取boss选择框
+			var $bossSelEle = $("input[id^="+idSplit[0]+"][id$="+idSplit[0]+"]");
+//			alert(selEles.length);
+			if($selEles.length == 0){
+				//没有选中的，应该取消boss选择框
+				$bossSelEle.attr("checked", null);
+			} else {
+				$bossSelEle.attr("checked", "checked");
+			}
+		}
+	}
+
+</script>
+</head>
+<body>
+<form name="ActionForm" method="post" action="/webcrm0527/sys/sysRoleAction_set.do">
+<input type="hidden" name="method" value="updateMenu">
+<input type="hidden" name="roleId" value="402881e42ab919a5012ab91a0b110001">
+<br/>
+<div class="control">
+	<button type='button' class='button' onMouseOver="this.className='button_over';" onMouseOut="this.className='button';" 
+		    onClick="SelectAllBox()">
+		    <img src="./button/quanbuxz.png" border='0' 
+		    align='absmiddle'>&nbsp;全部选中</button>
+	<button type='button' class='button' onMouseOver="this.className='button_over';" onMouseOut="this.className='button';"  
+	        onClick="UnSelectAllBox()">
+	        <img src="./button/quanbubxz.png" border='0' 
+	        align='absmiddle'>&nbsp;全部不选中</button>
+	<button type='button' class='button' onMouseOver="this.className='button_over';" onMouseOut="this.className='button';"  
+	        onClick="document.ActionForm.submit();">
+	        <img src="./button/baocun.png" border='0' 
+	        align='absmiddle'>&nbsp;保存</button>
+	<button type='button' class='button' onMouseOver="this.className='button_over';" onMouseOut="this.className='button';"  
+	        onClick="parent.close();">
+	        <img src="./button/guanbi.png" border='0' 
+	        align='absmiddle'>&nbsp;关闭</button>
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#6A82A8">
+	<tr>
+		<td align="center" height="25"><span style="color:#FFFFFF; font-weight:bold">操作权限组：人力资源部权限组</span></td>
+	</tr>
+</table>
+<div class="border" style="padding:3px">
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+	     <fieldset style='padding:5px;clear:left;'>
+	          <legend><input type='checkbox' class='checkbox' name='menuModule' value='company,company' 
+	                   id='company_company' onClick='goSelect(this.id)' 
+		                title="客户管理"  >客户管理
+	          </legend>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='company,base'
+		                        id='company_base' onClick='goSelect(this.id)' 
+		                        title='客户拜访'>客户拜访</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='company,linkMan'
+		                        id='company_linkMan' onClick='goSelect(this.id)' 
+		                        title='联系人列表'  >联系人列表</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='company,linkTouch'
+		                        id='company_linkTouch' onClick='goSelect(this.id)' 
+		                        title='联系记录列表'  >联系记录列表</div>
+		         
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='company,rule'
+		                        id='company_rule' onClick='goSelect(this.id)' 
+		                        title='客户查重设置 '  >客户查重设置 </div>
+	
+	   </fieldset>
+
+	     <fieldset style='padding:5px;clear:left;'>
+	          <legend><input type='checkbox' class='checkbox' name='menuModule' value='sys,sys' 
+	                   id='sys_sys' onClick='goSelect(this.id)' 
+		                title="系统设置 "  
+		                 >系统设置 
+	          </legend>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='sys,group'
+		                        id='sys_group' onClick='goSelect(this.id)' 
+		                        title='部门设置' 
+		                        >部门设置</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='sys,user'
+		                        id='sys_user' onClick='goSelect(this.id)' 
+		                        title='人事管理'  >人事管理</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='sys,role'
+		                        id='sys_role' onClick='goSelect(this.id)' 
+		                        title='操作权限组' >操作权限组</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='sys,province'
+		                        id='sys_province' onClick='goSelect(this.id)' 
+		                        title='省份资料' >省份资料</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='sys,city'
+		                        id='sys_city' onClick='goSelect(this.id)' 
+		                        title='城市资料' >城市资料</div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='sys,code'
+		                        id='sys_code' onClick='goSelect(this.id)' 
+		                        title='编码规则' >编码规则</div>
+
+	   </fieldset>
+
+	     <fieldset style='padding:5px;clear:left;'>
+	          <legend><input type='checkbox' class='checkbox' name='menuModule' value='report,report' 
+	                   id='report_report' onClick='goSelect(this.id)' 
+		                title="报表与分析" >报表与分析
+	          </legend>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='report,khflfx'
+		                        id='report_khflfx' onClick='goSelect(this.id)' 
+		                        title='客户分类分析 ' >客户分类分析 </div>
+		            <div><input type='checkbox' class='checkbox' name='menuModule' 
+		                 value='report,khfx'
+		                        id='report_khfx' onClick='goSelect(this.id)' 
+		                        title='客户分析 ' >客户分析 </div>
+	   </fieldset>
+</td>
+	</tr>
+</table>
+
+</div>
+</form>
+</body>
+</html>
