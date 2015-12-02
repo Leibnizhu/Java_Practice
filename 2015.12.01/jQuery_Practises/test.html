@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>收缩展开效果</title>
+<script type="text/javascript" src="../js/jquery-1.4.2.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+</script>
+<!-- 收缩展开效果 -->
+<div class="box">
+    <h1>收缩展开效果1</h1>
+	<div id="menu1">
+        1<br />
+        2<br />
+        3<br />
+        4<br />
+        5<br />
+	</div>
+</div>
+<br />
+<div id="menu2">
+    <h1>收缩展开效果2</h1>
+	<div class="text">
+        1<br />
+        2<br />
+	</div>
+</div>
+
+<div id="menu3">
+    <h1>收缩展开效果3</h1>
+	<div class="text">
+        1<br />
+        2<br />
+	</div>
+</div>
+</body>
+   <script language="JavaScript">
+   		$("h1").each(function(index,domEle){
+			$(domEle).click(function(){
+				$(domEle).next().slideToggle("normal");
+			});
+		});
+   
+   </script>
+</html>

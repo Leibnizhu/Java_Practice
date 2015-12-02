@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<script language="JavaScript" src="../js/jquery-1.4.2.js"></script>
+	</head>
+	<body>
+		<form method="post" action="">
+		   	请选择您的爱好!
+			<br><input type="checkbox" id="checkedAll_2"/>全选/全不选
+		   	<br/>
+		    <input type="checkbox" name="items" value="足球"/>足球
+			<input type="checkbox" name="items" value="篮球"/>篮球
+			<input type="checkbox" name="items" value="游泳"/>游泳
+			<input type="checkbox" name="items" value="唱歌"/>唱歌
+		   	<br/>
+		    <input type="button" id="CheckedAll" value="全　选"/>
+		    <input type="button" id="CheckedNo" value="全不选"/>
+		    <input type="button" id="CheckedRev" value="反　选"/> 
+		
+			<input type="button" id="send" value="提　交"/> 
+		</form>
+	</body>
+	<script language="JavaScript">
+		$("#CheckedAll").click(function(){
+			$("input[type=checkbox]").attr("checked", "checked");
+		});
+		
+		$("#CheckedNo").click(function(){
+			$("input[type=checkbox]").removeAttr("checked");
+		});
+		
+		$("#CheckedRev").click(function(){
+			$("input[name=items]").each(function(index, domEle){
+				if($(domEle).attr("checked")){
+					$(domEle).removeAttr("checked");
+				} else {
+					$(domEle).attr("checked", "checked");
+				}
+			});
+		});
+		
+		$("#checkedAll_2").click(function(){
+			if($(this).attr("checked")){
+				$("input[type=checkbox]").attr("checked", "checked");
+			} else {
+				$("input[type=checkbox]").removeAttr("checked");
+			}
+		});
+		
+		$("#send").click(function(){
+			$("input[name=items]:checked").each(function(index, domEle){
+//			alert("rswer");
+				alert($(domEle).val());
+			});
+		});
+	
+	</script>
+</html>
