@@ -54,7 +54,14 @@ td div {
 			}
 		}
 	}
-
+	
+	function SelectAllBox(){
+		$("input[type=checkbox]").attr("checked", "checked");
+	}
+	
+	function UnSelectAllBox(){
+		$("input[type=checkbox]").attr("checked", null);
+	}
 </script>
 </head>
 <body>
