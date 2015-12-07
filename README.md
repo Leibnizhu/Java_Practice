@@ -74,7 +74,12 @@
 包括：通过邮件发送激活码进行注册的DEMO，包括注册、登录、激活三大基本功能
 * [2015.10.31](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.10.27)
 包括：一个简单的相片管理系统，任何人均可上传，只能删除同IP上传的照片，提供下载功能
-
+* [2015.11.05](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.11.05)
+包括：一个网上书城的DEMO，包括图书管理，分类显示，用户管理，订单管理，地址管理
+* [2015.11.26](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.11.26)
+包括：JavaScript的练习
+* [2015.12.01](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.12.01)
+包括：jQuery的练习
 
 ### 感想
 ---
