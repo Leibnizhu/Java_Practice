@@ -32,8 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			</td>
   		</tr>
   		<tr>
-  			<td align="center" valign="top" style="width:100px">
-  				<a href="" target="mainFrame">员工列表</a><br/>
+  			<td align="center" valign="top" style="width:100px;height:600px;">
+  				<a href="<s:url action='UserAction_list' namespace='/user'/>" target="mainFrame">员工列表</a><br/>
   			</td>
   			<td>
   				<iframe name="mainFrame" src="<c:url value='/jsps/welcome.jsp'/>" frameborder="0" width="100%" height="100%">

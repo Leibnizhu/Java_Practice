@@ -12,4 +12,11 @@
 			<result name="success">/jsps/home.jsp</result>
 		</action>
 	</package>
+
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="UserAction_*" class="leibniz.hu.action.UserAction" method="{1}">
+			<result name="list">/jsps/list.jsp</result>
+			<result name="success">/jsps/home.jsp</result>
+		</action>
+	</package>
 </struts>
