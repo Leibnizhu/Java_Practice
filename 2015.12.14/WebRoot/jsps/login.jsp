@@ -39,11 +39,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 	  			<tr>
 	  				<td>用户名</td>
-	  				<td><s:textfield name="logname" id="logname"/></td>
+	  				<td><s:textfield name="loginName" id="loginName"/></td>
 	  			</tr>
 	  			<tr>
 	  				<td>密&nbsp;码</td>
-	  				<td><s:password name="logpswd" id="logpswd"/></td>
+	  				<td><s:password name="loginPswd" id="loginPswd"/></td>
 	  			</tr>
 	  			<tr>
 	  				<td colspan="2" align="center" style="height:20px;">

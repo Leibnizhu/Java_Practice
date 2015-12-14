@@ -8,7 +8,8 @@
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<package name="login" namespace="/login" extends="struts-default">
 		<action name="LoginAction_login" class="leibniz.hu.action.LoginAction" method="login">
-			<result name="success">/index.jsp</result>
+			<result name="error">/jsps/login.jsp</result>
+			<result name="success">/jsps/home.jsp</result>
 		</action>
 	</package>
 </struts>
