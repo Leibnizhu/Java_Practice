@@ -26,7 +26,7 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 
 <body>
 
-<s:form id="form1" name="form1" action="/user/UserAction_list.do" method="post">
+<s:form id="form1" name="form1" namespace="/user" action="UserAction_select" method="post">
 			<table>
 				<TBODY>
 					<tr>
@@ -66,8 +66,8 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 										是否上传简历
 									</td>
 									<td class="ta_01" bgColor="#ffffff">
-										<s:select list="#{1:'有',2:'无'}" listKey="key" listValue="value"
-											headerKey="" headerValue="--请选择--" name="isUpload" id="isUpload"></s:select>
+										<s:select list="#{1:'有',0:'无'}" listKey="key" listValue="value"
+											headerKey="" headerValue="--请选择--" name="resume" id="resume"></s:select>
 
 									</td>
 								</tr>
@@ -80,10 +80,10 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 									</td>
 									<td align="right" bgColor="#ffffff" class="ta_01"><br><br></td>
 									<td align="right" bgColor="#ffffff" class="ta_01">
-										<s:submit type="button" id="search" name="search" value="查询" cssClass="button_view"></s:submit>
+										<s:submit type="button" id="search" name="search" value="查询"></s:submit>
 										
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<s:reset type="button" name="reset" id="reset" value="重置" cssClass="button_view"></s:reset>
+										<s:reset type="button" name="reset" id="reset" value="重置"></s:reset>
 
 									</td>
 								</tr>
@@ -141,7 +141,7 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 											onmouseout="this.style.backgroundColor = '#F5FAFE';">
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="18%">
-												<s:property value="#user.logonName"/>
+												<s:property value="#user.loginName"/>
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">

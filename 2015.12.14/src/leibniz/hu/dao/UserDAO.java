@@ -1,6 +1,7 @@
 package leibniz.hu.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -40,5 +41,42 @@ public class UserDAO {
 		return userList;
 	}
 
-
+	public List<User> select(User user) {
+		//根据条件模糊查询
+		List<User> userList = null;
+		//获取查询的条件
+		String userName = user.getUserName();
+		String sex = user.getSex();
+		String education = user.getEducation();
+		String resume = user.getResume();
+		//遍历四个条件，拼成sql语句，及相应的参数数组
+		String sql = "select * from s_user where 1=1";
+		List<Object> params = new ArrayList<Object>();
+		if(null!=userName && !"".equals(userName.trim())){
+			sql += " and userName LIKE ?";
+			params.add("%" + userName + "%");
+		}
+		if(null!=sex && !"".equals(sex.trim())){
+			sql += " and sex =?";
+			params.add(sex);
+		}
+		if(null!=education && !"".equals(education.trim())){
+			sql += " and education =?";
+			params.add(education);
+		}
+		if(null!=resume && !"".equals(resume.trim())){
+			sql += " and resume =?";
+			params.add(resume);
+		}
+		System.out.println(sql);
+		QueryRunner qRun = new QueryRunner(DataSourceUtil.getDataSource());
+		try {
+			userList = qRun.query(sql, new BeanListHandler<User>(User.class), params.toArray());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			DataSourceUtil.remove();
+		}
+		return userList;
+	}
 }
