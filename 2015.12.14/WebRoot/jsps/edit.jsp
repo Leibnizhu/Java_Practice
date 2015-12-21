@@ -5,28 +5,16 @@
 		<meta http-equiv="Content-Language" content="zh-cn">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<LINK href="${pageContext.request.contextPath}/css/Style.css" type="text/css" rel="stylesheet">
-		<script language="javascript" src="${pageContext.request.contextPath}/js/public.js"></script>
-		<script language="javascript" src="${pageContext.request.contextPath}/js/check.js"></script>
 		<!-- 日期插件，使用jquery -->
 		<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery-1.4.2.js"></script>
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/jquery/jquery.datepick.css" type="text/css">
-		<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery.datepick.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery.datepick-zh-CN.js"></script>
 	</HEAD>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			//使用class属性处理  'yy-mm-dd' 设置格式"yyyy/mm/dd"
-			$('#birthday').datepick({dateFormat: 'yy-mm-dd'}); 
-		});
-	</script>
 	<body>
-		<s:form id="form1" name="form1" action="/user/UserAction_update.do" method="post" enctype="multipart/form-data">
+		<s:form id="form1" name="form1" action="/user/UserAction_update.action" method="post" enctype="multipart/form-data">
 			<s:token></s:token>
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
-				<input type="hidden" name="userID" value="17" id="userID"/>
-				<input type="hidden" name="path" value="D:\apache-tomcat-6.0.18\webapps\itcastStrutsProject\upload/2012/03/29/&#36153;&#29992;&#25253;&#38144;&#21333;&#27169;&#26495;.doc" id="path"/>
-				<input type="hidden" name="filename" value="&#36153;&#29992;&#25253;&#38144;&#21333;&#27169;&#26495;.doc" id="filename"/>
+				<!--<input type="hidden" name="path" value="D:\apache-tomcat-6.0.18\webapps\itcastStrutsProject\upload/2012/03/29/&#36153;&#29992;&#25253;&#38144;&#21333;&#27169;&#26495;.doc" id="path"/>
+				<input type="hidden" name="filename" value="&#36153;&#29992;&#25253;&#38144;&#21333;&#27169;&#26495;.doc" id="filename"/>-->
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
@@ -40,7 +28,8 @@
 						登录名：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<s:textfield name="logonName" id="logonName" cssClass="bg"></s:textfield>
+						<s:hidden  name="userID"  id="userID"/>
+						<s:textfield name="loginName" id="loginName" cssClass="bg"></s:textfield>
 					</td>
 				</tr>
 				<tr>
@@ -48,7 +37,7 @@
 						 密码：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<s:password name="logonPwd" id="logonPwd" showPassword="true" />
+						<s:password name="loginPswd" id="loginPswd" showPassword="true" />
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						用户姓名：
@@ -114,7 +103,7 @@
 				</TR>
 				<TR>
 					<td align="center" colSpan="4" class="sep1">
-						<img src="${pageContext.request.contextPath}/images/shim.gif">
+						<img src="${pageContext.request.contextPath}/imgs/shim.gif">
 					</td>
 				</TR>
 				<tr>

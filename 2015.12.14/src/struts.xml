@@ -25,6 +25,7 @@
 			<result name="list">/jsps/list.jsp</result>
 			<result name="success">/jsps/home.jsp</result>
 			<result name="view">/jsps/view.jsp</result>
+			<result name="edit">/jsps/edit.jsp</result>
 			<result name="invalid.token">/jsps/error.jsp</result>
 			<result name="error">/jsps/error.jsp</result>
 			<result name="relist" type="redirectAction">

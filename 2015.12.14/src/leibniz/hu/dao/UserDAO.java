@@ -120,4 +120,27 @@ public class UserDAO {
 			DataSourceUtil.remove();
 		}
 	}
+
+	public void updateUser(User user) {
+		String sql;
+		QueryRunner qRun = new QueryRunner();
+		try {
+			if("1" == user.getResume()){
+				//有更新简历
+				sql = "UPDATE s_user SET userName=?, loginName=?, loginPswd=?, sex=?, birthday=?, education=?, telephone=?, interest=?, resume=?, filename=?, remark=? where userID=? ";
+				qRun.update(DataSourceUtil.getConnNonTrans(), sql, user.getUserName(), user.getLoginName(), user.getLoginPswd(),
+						user.getSex(), user.getBirthday(), user.getEducation(), user.getTelephone(), user.getInterest(),
+						user.getResume(), user.getFilename(), user.getRemark(), user.getUserID());
+			} else {
+				sql = "UPDATE s_user SET userName=?, loginName=?, loginPswd=?, sex=?, birthday=?, education=?, telephone=?, interest=?, remark=? where userID=? ";
+				qRun.update(DataSourceUtil.getConnNonTrans(), sql, user.getUserName(), user.getLoginName(), user.getLoginPswd(),
+						user.getSex(), user.getBirthday(), user.getEducation(), user.getTelephone(), user.getInterest(),
+						user.getRemark(), user.getUserID());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			DataSourceUtil.remove();
+		}
+	}
 }
