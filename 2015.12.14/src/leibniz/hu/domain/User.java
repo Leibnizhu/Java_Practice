@@ -1,6 +1,7 @@
 package leibniz.hu.domain;
 
 import java.io.File;
+import java.io.InputStream;
 
 public class User {
 	//数据库中的字段
@@ -40,6 +41,19 @@ public class User {
 		this.uploadFileName = uploadFileName;
 	}
 	
+	//用于下载简历附件;
+	private InputStream downloadStream;
+	
+	public InputStream getDownloadStream() {
+		return downloadStream;
+	}
+	public void setDownloadStream(InputStream downloadStream) {
+		this.downloadStream = downloadStream;
+	}
+	
+	//默认构造函数
+	public User() {
+	}
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", userName=" + userName
@@ -51,6 +65,8 @@ public class User {
 				+ ", uploadContentType=" + uploadContentType
 				+ ", uploadFileName=" + uploadFileName + "]";
 	}
+	
+	//数据库字段属性的get和set方法
 	public String getFilename() {
 		return filename;
 	}

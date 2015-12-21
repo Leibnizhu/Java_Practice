@@ -40,7 +40,7 @@
 										性别：
 									</td>
 									<td class="ta_01" bgColor="#ffffff">
-										<s:select list="{'男','女'}" headerKey="" headerValue="--选择性别--" 
+										<s:select list="{'男','女'}" headerKey="" headerValue="---不限---" 
 												name="sex" id="sex"></s:select>
 
 									</td>
@@ -51,7 +51,7 @@
 									</td>
 									<td class="ta_01" bgColor="#ffffff">
 										<s:select list="{'博士','硕士','研究生','本科','专科','高中'}"
-											headerKey="" headerValue="--选择学历--" name="education" id="education"></s:select>
+											headerKey="" headerValue="---不限---" name="education" id="education"></s:select>
 
 									</td>
 									<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
@@ -59,7 +59,7 @@
 									</td>
 									<td class="ta_01" bgColor="#ffffff">
 										<s:select list="#{1:'有',0:'无'}" listKey="key" listValue="value"
-											headerKey="" headerValue="--请选择--" name="resume" id="resume"></s:select>
+											headerKey="" headerValue="---不限---" name="resume" id="resume"></s:select>
 
 									</td>
 								</tr>
@@ -151,17 +151,17 @@
 												<s:property value="#user.education"/>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${pageContext.request.contextPath}/user/UserAction_edit.do?userID=<s:property value="#user.userID"/>">
+												<a href="${pageContext.request.contextPath}/user/UserAction_edit.action?userID=<s:property value="#user.userID"/>">
 													<img src="${pageContext.request.contextPath}/imgs/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${pageContext.request.contextPath}/user/UserAction_view.do?userID=<s:property value="#user.userID"/>">
+												<a href="${pageContext.request.contextPath}/user/UserAction_view.action?userID=<s:property value="#user.userID"/>">
 													<img src="${pageContext.request.contextPath}/imgs/button_view.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${pageContext.request.contextPath}/user/UserAction_delete.do?userID=<s:property value="#user.userID"/>">
+												<a href="${pageContext.request.contextPath}/user/UserAction_delete.action?userID=<s:property value="#user.userID"/>">
 													<img src="${pageContext.request.contextPath}/imgs/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>

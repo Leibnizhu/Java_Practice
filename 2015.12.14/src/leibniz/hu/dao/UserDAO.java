@@ -95,4 +95,18 @@ public class UserDAO {
 			DataSourceUtil.remove();
 		}
 	}
+
+	public User getUserById(String userID) {
+		User user = null;
+		String sql = "select * from s_user where userID = ?";
+		QueryRunner qRun = new QueryRunner();
+		try {
+			user = qRun.query(DataSourceUtil.getConnNonTrans(), sql, new BeanHandler<User>(User.class), userID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			DataSourceUtil.remove();
+		}
+		return user;
+	}
 }
