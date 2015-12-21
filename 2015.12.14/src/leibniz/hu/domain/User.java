@@ -1,5 +1,7 @@
 package leibniz.hu.domain;
 
+import java.io.File;
+
 public class User {
 	//数据库中的字段
 	private String userID; //主键ID
@@ -12,14 +14,48 @@ public class User {
 	private String telephone; //#电话 
 	private String interest; //#兴趣爱好（例如：体育、旅游、逛街）
 	private String resume; //#是否有简历，开始的时候用boolean，但是只能表示有和无两种状态，在模糊查询中，如果不设有否简历的条件无法表示，所以放弃boolean，尝试Boolean依旧失败，使用String吧
+	private String filename;
 	private String remark; //  #备注
+	
+	//以下是上传文件用
+	private File upload;
+	private String uploadContentType;
+	private String uploadFileName;
+	public File getUpload() {
+		return upload;
+	}
+	public void setUpload(File upload) {
+		this.upload = upload;
+	}
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", userName=" + userName
 				+ ", loginName=" + loginName + ", loginPswd=" + loginPswd
 				+ ", sex=" + sex + ", birthday=" + birthday + ", education="
 				+ education + ", telephone=" + telephone + ", interest="
-				+ interest + ", resume=" + resume + ", remark=" + remark + "]";
+				+ interest + ", resume=" + resume + ", filename=" + filename
+				+ ", remark=" + remark + ", upload=" + upload
+				+ ", uploadContentType=" + uploadContentType
+				+ ", uploadFileName=" + uploadFileName + "]";
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	public String getUserID() {
 		return userID;

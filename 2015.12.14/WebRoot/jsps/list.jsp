@@ -5,23 +5,15 @@
 		<meta http-equiv="Content-Language" content="zh-cn">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<style type="text/css">
-<!--
-body {
-	background-color: #FFFFFF;
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-body,td,th {
-	color: #000000;
-}
--->
-    </style>
-<style>
-BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #cccccc; SCROLLBAR-ARROW-COLOR:  #ffffff; SCROLLBAR-TRACK-COLOR: #ffffFF; SCROLLBAR-DARKSHADOW-COLOR: #cccccc; }
-</style>
+	<style>
+		BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #cccccc; SCROLLBAR-ARROW-COLOR:  #ffffff; SCROLLBAR-TRACK-COLOR: #ffffFF; SCROLLBAR-DARKSHADOW-COLOR: #cccccc; }
+	</style>
+	
+	<script type="text/javascript">
+		function addUser(){
+			window.location.href="${pageContext.request.contextPath}/jsps/add.jsp";
+		}
+	</script>
 </head>
 
 <body>
@@ -160,17 +152,17 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 											</td>
 											<td align="center" style="HEIGHT: 22px">
 												<a href="${pageContext.request.contextPath}/user/UserAction_edit.do?userID=<s:property value="#user.userID"/>">
-													<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
+													<img src="${pageContext.request.contextPath}/imgs/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
 												<a href="${pageContext.request.contextPath}/user/UserAction_view.do?userID=<s:property value="#user.userID"/>">
-													<img src="${pageContext.request.contextPath}/images/button_view.gif" border="0" style="CURSOR: hand">
+													<img src="${pageContext.request.contextPath}/imgs/button_view.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
 												<a href="${pageContext.request.contextPath}/user/UserAction_delete.do?userID=<s:property value="#user.userID"/>">
-													<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
+													<img src="${pageContext.request.contextPath}/imgs/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 										</tr>

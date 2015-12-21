@@ -5,6 +5,7 @@
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
 	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.multipart.maxSize" value="20971520"></constant>
 	<package name="login" namespace="/login" extends="struts-default">
 		<action name="LoginAction_login" class="leibniz.hu.action.LoginAction" method="login">
 			<result name="error">/jsps/login.jsp</result>
@@ -16,6 +17,10 @@
 		<action name="UserAction_*" class="leibniz.hu.action.UserAction" method="{1}">
 			<result name="list">/jsps/list.jsp</result>
 			<result name="success">/jsps/home.jsp</result>
+			<result name="add" type="redirectAction">
+				<param name="actionName">UserAction_list</param>
+				<param name="namespace">/user</param>
+			</result>
 		</action>
 	</package>
 </struts>

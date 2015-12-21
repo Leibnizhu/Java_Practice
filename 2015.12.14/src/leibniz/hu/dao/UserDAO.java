@@ -30,9 +30,9 @@ public class UserDAO {
 	public List<User> list() {
 		List<User> userList = null;
 		String sql = "select * from s_user";
-		QueryRunner qRun = new QueryRunner(DataSourceUtil.getDataSource());
+		QueryRunner qRun = new QueryRunner();
 		try {
-			userList = qRun.query(sql, new BeanListHandler<User>(User.class));
+			userList = qRun.query(DataSourceUtil.getConnNonTrans(), sql, new BeanListHandler<User>(User.class));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}  finally {
@@ -69,14 +69,30 @@ public class UserDAO {
 			params.add(resume);
 		}
 		System.out.println(sql);
-		QueryRunner qRun = new QueryRunner(DataSourceUtil.getDataSource());
+		QueryRunner qRun = new QueryRunner();
 		try {
-			userList = qRun.query(sql, new BeanListHandler<User>(User.class), params.toArray());
+			userList = qRun.query(DataSourceUtil.getConnNonTrans(), sql, new BeanListHandler<User>(User.class), params.toArray());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}  finally {
 			DataSourceUtil.remove();
 		}
 		return userList;
+	}
+
+	public void add(User user) {
+		List<User> userList = null;
+		String sql = "INSERT INTO s_user (userID, userName, loginName, loginPswd, sex, birthday, education, telephone, interest, resume, filename, remark) " +
+					 " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		QueryRunner qRun = new QueryRunner();
+		try {
+			qRun.update(DataSourceUtil.getConnNonTrans(), sql, user.getUserID(), user.getUserName(), user.getLoginName(), user.getLoginPswd(),
+					user.getSex(), user.getBirthday(), user.getEducation(), user.getTelephone(), user.getInterest(),
+					user.getResume(), user.getFilename(), user.getRemark());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			DataSourceUtil.remove();
+		}
 	}
 }
