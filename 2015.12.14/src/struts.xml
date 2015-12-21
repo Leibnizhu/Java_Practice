@@ -27,7 +27,7 @@
 			<result name="view">/jsps/view.jsp</result>
 			<result name="invalid.token">/jsps/error.jsp</result>
 			<result name="error">/jsps/error.jsp</result>
-			<result name="add" type="redirectAction">
+			<result name="relist" type="redirectAction">
 				<param name="actionName">UserAction_list</param>
 				<param name="namespace">/user</param>
 			</result>

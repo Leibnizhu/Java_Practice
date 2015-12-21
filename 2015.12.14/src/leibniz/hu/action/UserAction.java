@@ -95,8 +95,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		}
 		userDao.add(user);
 		//增加用户之后
-		list();
-		return "list";
+		return "relist";
 	}
 	
 	/**
@@ -149,5 +148,17 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 			}
 		}
 		return "error";
+	}
+	
+	/**
+	 * 根据指定的userID删除用户
+	 * @return
+	 */
+	public String delete(){
+		System.out.println("UserAction---delete()");
+		UserDAO userDao = new UserDAO();
+		String userID = ServletActionContext.getRequest().getParameter("userID");
+		userDao.deleteByID(userID);
+		return "relist";
 	}
 }

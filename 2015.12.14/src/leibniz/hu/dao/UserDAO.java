@@ -81,7 +81,6 @@ public class UserDAO {
 	}
 
 	public void add(User user) {
-		List<User> userList = null;
 		String sql = "INSERT INTO s_user (userID, userName, loginName, loginPswd, sex, birthday, education, telephone, interest, resume, filename, remark) " +
 					 " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		QueryRunner qRun = new QueryRunner();
@@ -108,5 +107,17 @@ public class UserDAO {
 			DataSourceUtil.remove();
 		}
 		return user;
+	}
+
+	public void deleteByID(String userID) {
+		String sql = "delete from s_user where userID = ?";
+		QueryRunner qRun = new QueryRunner();
+		try {
+			qRun.update(DataSourceUtil.getConnNonTrans(), sql, userID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			DataSourceUtil.remove();
+		}
 	}
 }
