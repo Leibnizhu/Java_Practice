@@ -80,7 +80,8 @@
 包括：JavaScript的练习
 * [2015.12.01](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.12.01)
 包括：jQuery的练习
-
+* [2015.12.14](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.12.14)
+包括：基于Struts2框架的一个人员管理系统
 ### 感想
 ---
 建设中...
