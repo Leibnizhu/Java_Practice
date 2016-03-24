@@ -17,15 +17,15 @@
 * [2015.07.05](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.05)
 包括：码农和产品经理的抽象类Demo，《Thinking in Java》的5.3, 5.4, 5.5, 5.21, 5.22等练习。
 * [2015.07.09](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.09)
-包括：视频教程里的老师和电脑异常Demo，还有一个更简单的异常处理Demo
+包括：老师和电脑异常Demo，还有一个更简单的异常处理Demo
 * [2015.07.12](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.12)
-包括：视频教程里两个练习：图形的接口/类的实现，多线程的基本练习
+包括：两个练习：图形的接口/类的实现，多线程的基本练习
 * [2015.07.13](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.13)
-包括：视频教程里两个练习：银行多个客户同时存钱，和多个窗口同时卖火车票的Demo
+包括：两个练习：银行多个客户同时存钱，和多个窗口同时卖火车票的Demo
 * [2015.07.14](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.14)
-包括：视频教程里三个练习：单个元素的Buffer、多个生产者和消费者(分别用synchronized和Lock实现)的Demo
+包括：三个练习：单个元素的Buffer、多个生产者和消费者(分别用synchronized和Lock实现)的Demo
 * [2015.07.16](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.16)
-包括：视频教程里四个String练习：字符串数组排序、统计子串出现次数、求最大相同子串、以及去头尾空格
+包括：四个String练习：字符串数组排序、统计子串出现次数、求最大相同子串、以及去头尾空格
 * [2015.07.18](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.18)
 包括：对字符串里的数字排序的Demo，简单的List容器Demo，用LinkedList实现栈和队列
 * [2015.07.19](https://github.com/Leibnizhu/Java_Practice/tree/master/2015.07.19)
